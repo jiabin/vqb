@@ -1,0 +1,2080 @@
+/* some theming variables */
+$version : 20140414;
+$color : #0d638f;
+$colorMuted : #7f8c8d;
+$colorLight : #2980b9;
+$colorExtraLight : #bebebf;
+$colorBlack : #4b4b4f;
+$colorBlackLight : #c6c6c9;
+$colorOrange : #ff9933;
+$colorTurquoise: #1abc9c;
+$colorRed : #d14c4c;
+$borderColor : #dcdcdc;
+$borderColorText : #d0d0d0;
+$borderColorInput : #c8d7de;
+$backgroundSmoked : #fafafa;
+$fontFamily : "Helvetica Neue", "Helvetica", sans-serif;
+$fontSize : 13px;
+$elementsSprite : 'img/elements.png?#{$version}';
+$elementsSpriteRetina : 'img/elements@2x.png?#{$version}';
+$selectSprite : 'img/select.png?#{$version}';
+$selectSpriteRetina : 'img/select@2x.png?#{$version}';
+$stepBackground : 'img/step_background.png?#{$version}';
+$fieldDbwIconsSprite : 'img/icons-sprite-fields-dbw.png?#{$version}';
+$fieldDbwIconsSpriteRetina : 'img/icons-sprite-fields-dbw@2x.png?#{$version}';
+$fieldLonIconsSprite : 'img/icons-sprite-fields-lon.png?#{$version}';
+$fieldLonIconsSpriteRetina : 'img/icons-sprite-fields-lon@2x.png?#{$version}';
+$fieldTumblrIconsSprite : 'img/icons-sprite-fields-tumblr.png?#{$version}';
+$fieldTumblrIconsSpriteRetina : 'img/icons-sprite-fields-tumblr@2x.png?#{$version}';
+$fieldGooglePlusIconsSprite : 'img/icons-sprite-fields-googleplus.png?#{$version}';
+$fieldGooglePlusIconsSpriteRetina : 'img/icons-sprite-fields-googleplus@2x.png?#{$version}';
+$fieldInstagramIconsSprite : 'img/icons-sprite-fields-instagram.png?#{$version}';
+$fieldInstagramIconsSpriteRetina : 'img/icons-sprite-fields-instagram@2x.png?#{$version}';
+$fieldYammerIconsSprite : 'img/icons-sprite-fields-yammer.png?#{$version}';
+$fieldYammerIconsSpriteRetina : 'img/icons-sprite-fields-yammer@2x.png?#{$version}';
+$fieldFBPagesIconsSprite : 'img/icons-sprite-fields-fbpages.png?#{$version}';
+$fieldFBPagesIconsSpriteRetina : 'img/icons-sprite-fields-fbpages@2x.png?#{$version}';
+$fieldIntenseDebateWordpressIconsSprite : 'img/icons-sprite-fields-intensedebate-wordpress.png?#{$version}';
+$fieldIntenseDebateWordpressIconsSpriteRetina : 'img/icons-sprite-fields-intensedebate-wordpress@2x.png?#{$version}';
+$fieldWeiboIconsSprite : 'img/icons-sprite-fields-weibo.png?#{$version}';
+$fieldWeiboIconsSpriteRetina : 'img/icons-sprite-fields-weibo@2x.png?#{$version}';
+$operatorIconsSprite : 'img/icons-sprite-operators.png?#{$version}';
+$operatorIconsSpriteRetina : 'img/icons-sprite-operators@2x.png?#{$version}';
+$otherIconsSprite : 'img/icons-sprite-other.png?#{$version}';
+$otherIconsSpriteRetina : 'img/icons-sprite-other@2x.png?#{$version}';
+$loader : 'img/loader.gif?#{$version}';
+$listIcons : 'img/list-icons.png?#{$version}';
+
+/* useful mixins */
+@mixin rounded($radius: 5px) {
+    -webkit-border-radius: $radius;
+    -khtml-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+@mixin roundedCorner($topLeft: 0, $topRight: 0, $bottomRight: 0, $bottomLeft: 0) {
+    -webkit-border-top-left-radius: $topLeft;
+    -webkit-border-top-right-radius: $topRight;
+    -webkit-border-bottom-right-radius: $bottomRight;
+    -webkit-border-bottom-left-radius: $bottomLeft;
+    -moz-border-radius-topleft: $topLeft;
+    -moz-border-radius-topright: $topRight;
+    -moz-border-radius-bottomright: $bottomRight;
+    -moz-border-radius-bottomleft: $bottomLeft;
+    border-top-left-radius: $topLeft;
+    border-top-right-radius: $topRight;
+    border-bottom-right-radius: $bottomRight;
+    border-bottom-left-radius: $bottomLeft;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+@mixin opacity($opacity: 0.5) {
+    $msOpacity : $opacity * 100;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $msOpacity + ")";
+    filter: alpha(opacity=$msOpacity);
+    -moz-opacity: $opacity;
+    -khtml-opacity: $opacity;
+    opacity: $opacity;
+}
+
+@mixin dropShadow($x: 0, $y: 0, $blur: 5px, $spread: 0, $opacity: 0.5) {
+    -webkit-box-shadow: $x $y $blur $spread rgba(0, 0, 0, $opacity);
+    -moz-box-shadow: $x $y $blur $spread rgba(0, 0, 0, $opacity);
+    box-shadow: $x $y $blur $spread rgba(0, 0, 0, $opacity);
+}
+
+@mixin glow($color: #fff, $blur: 5px, $spread: 0, $opacity: 0.5) {
+    -webkit-box-shadow: 0 0 $blur $spread rgba($color, $opacity);
+    -moz-box-shadow: 0 0 $blur $spread rgba($color, $opacity);
+    box-shadow: 0 0 $blur $spread rgba($color, $opacity);
+}
+
+@mixin transition($transition: all 0.2s ease-in-out) {
+    -webkit-transition: #{$transition};
+    -moz-transition: #{$transition};
+    -o-transition: #{$transition};
+    transition: #{$transition};
+}
+
+@mixin backgroundSize($width: 100px, $height: 100px) {
+    -moz-background-size: $width $height;
+    -ie-background-size: $width $height;
+    -o-background-size: $width $height;
+    -webkit-background-size: $width $height;
+    background-size: $width $height;
+}
+
+@mixin boxSizing($sizing: border-box) {
+    -moz-box-sizing: $sizing;
+    -webkit-box-sizing: $sizing;
+    box-sizing: $sizing;
+}
+
+/*
+ * JCSDL EDITOR
+ */
+/* jcsdl-container reset */
+.jcsdl-container {
+    * {
+        @include boxSizing(content-box);
+    }
+
+    ul, li {margin: 0; padding: 0;}
+}
+
+.jcsdl-container, .jcsdl-popup {
+    overflow: hidden; position: relative;
+    font-size: $fontSize; font-family: $fontFamily; color: $colorLight;
+
+    /* building blocks */
+    a {
+        color: $color; text-decoration: none;
+
+        &:hover {color: $colorTurquoise; text-decoration: none;}
+    }
+
+    .clearfix:before, .clearfix:after { content:""; display:table; }
+    .clearfix:after { clear: both; }
+    .clearfix { zoom: 1; }
+}
+
+.jcsdl-label {float: left; font-size: 1em; color: $colorLight; font-weight: normal;}
+.jcsdl-bordered {padding: 8px; border: 1px solid $borderColorInput; @include rounded(3px);}
+
+.jcsdl-icon {
+    float: left; margin: 0; margin-right: 20px;
+    display: block; width: 80px; height: 80px;
+    text-align: center;
+    .font-icon {
+        font-size: 5em;
+        display: block;
+        &.no-icon {
+            line-height: 1em;
+        }
+        &.no-icon::before {
+            // content: '?';
+        }
+    }
+    .font-icon::after {
+        content: ' ';
+    }
+}
+
+.jcsdl-button {
+    float: left; margin-right: 8px;
+    // overflow: hidden; text-indent: -9999px;
+    display: block; overflow: hidden; padding: 8px; line-height: 14px;
+    border: 1px solid $borderColorInput; @include rounded(3px);
+    // background: url($elementsSprite) no-repeat 0 -55px;
+
+    &.jcsdl-editor-cancel, &.jcsdl-filter-cancel {width: 56px; background-position: 0 -89px;}
+
+    &:hover {@include opacity(0.9);}
+}
+
+.jcsdl-editor-save {
+    float: none;
+    margin: 0 auto;
+}
+
+.jcsdl-container, .jcsdl-popup {
+    a.jcsdl-btn {
+        display: block; overflow: hidden; padding: 8px; line-height: 14px;
+        float: left; margin-right: 8px;
+        border: 1px solid $borderColorInput; @include rounded(3px);
+        color: $color; font-weight: bold;
+
+        &.active {
+            border-color: $colorTurquoise;
+            color: $colorTurquoise;
+        }
+
+        &.disabled {
+            border-color: $borderColor !important;
+            color: $borderColorText !important;
+            @include opacity(0.65);
+        }
+
+        &:hover {
+            color: $colorTurquoise;
+        }
+
+        &.jcsdl-filter-save {
+            float: none; 
+            margin: 10px auto;
+            width: 181px; 
+            background-position: 0 0;
+        }
+    }
+}
+
+.jcsdl-header {
+    overflow: hidden;
+    padding: 15px; padding-bottom: 0;
+
+    h3 {
+        float: left; margin: 0;
+        line-height: 1em;
+        font-size: 2em; color: $color; font-weight: normal;
+    }
+
+    .jcsdl-actions {float: right;}
+    .jcsdl-editor-save {margin-right: 0;}
+    .jcsdl-error {margin: 10px 0;}
+}
+
+.jcsdl-footer {
+    overflow: hidden;
+    padding: 15px; padding-top: 0;
+
+    .jcsdl-actions {float: left; overflow: hidden; margin-bottom: 5px;}
+}
+
+.jcsdl-row {
+    width: auto; position: relative;
+    margin-bottom: 8px;
+    zoom: 1;
+
+    &:before, &:after {content: ""; display: table;}
+    &:after {clear: both;}
+}
+
+.jcsdl-error {
+    display: block; margin: 10px 15px;
+    padding: 0 10px; height: 38px; line-height: 38px; overflow: hidden;
+    text-align: left;
+    border: 1px solid #fbd2d2; @include rounded(3px);
+    background: url($elementsSprite) repeat-x center -240px;
+
+    strong {color: $colorRed; font-weight: bold;}
+    span {color: #222; margin-left: 5px;}
+}
+
+/*
+ * MAIN VIEW
+ */
+.jcsdl-mainview {
+    .jcsdl-header, .jcsdl-header h3 {line-height: 38px;}
+    .jcsdl-footer {display: none;}
+}
+
+/* main view actions (add new filter, add existing stream) */
+.jcsdl-mainview-actions {
+    overflow: hidden;
+    float: right; margin-top: 2px;
+}
+
+.jcsdl-mainview-action {
+    .jcsdl-picto {
+        float: left; margin-right: 8px;
+        display: block; width: 14px; height: 14px;
+        background: url($elementsSprite) no-repeat -140px -68px;
+    }
+
+    &.jcsdl-add-filter.jcsdl-btn {margin-right: 0;}
+
+    &.jcsdl-editor-preview {
+        .jcsdl-picto {
+            margin: 0;
+            background-position: -115px -105px;
+        }
+    }
+
+    &:hover {
+        &.jcsdl-add-filter .jcsdl-picto {background-position: -115px -89px;}
+        &.jcsdl-editor-preview .jcsdl-picto {background-position: -129px -105px;}
+    }
+}
+
+/* main view mode (expanded / collapsed) */
+.jcsdl-mainview-mode {
+    overflow: hidden;
+    float: right;
+    margin-right: 8px;
+    width: 110px;
+}
+
+.jcsdl-mainview-mode-options {
+    overflow: hidden;
+    float: right; margin-left: 8px; margin-top: 2px;
+    height: 14px;
+}
+
+.jcsdl-mainview-mode-option {
+    float: left; margin-right: 8px;
+    display: block; width: 13px; height: 13px;
+    background: url($elementsSprite) no-repeat -140px -55px;
+    @include opacity(0.3);
+
+    &.jcsdl-expanded {background-position: -156px -55px;}
+    &.jcsdl-collapsed {background-position: -140px -55px; margin-right: 0;}
+
+    &:hover {@include opacity(0.5);}
+    &.active {@include opacity(1);}
+}
+
+/* advanced logic view */
+.jcsdl-advanced-container {
+    margin: 15px 0; position: relative;
+    background: $backgroundSmoked; border-color: $borderColor;
+    zoom: 1;
+
+    &:before, &:after {content: ""; display: table;}
+    &:after {clear: both;}
+
+    li {list-style: none;}
+    .ui-sortable-helper {@include dropShadow(-2px, 2px, 4px, 0, 0.1); @include rounded(3px);}
+}
+
+.jcsdl-advanced-gui-container {
+    display: block; width: 100%; height: 66px; @include boxSizing();
+    margin: 0; position: relative; overflow: hidden;
+
+    .jcsdl-advanced-gui-arrow {
+        display: block; height: 100%; width: 55px;
+        position: absolute; top: 0;
+        background: $backgroundSmoked;
+
+        span {
+            display: block; width: 12px; height: 18px;
+            position: absolute; top: 50%; margin-top: -9px;
+            background: transparent url($elementsSprite) no-repeat -74px -393px;
+            @include opacity(0.7);
+        }
+
+        &.left {
+            left: 0;
+            background: -moz-linear-gradient(left,  rgba(250,250,250,1) 50%, rgba(254,254,254,0) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, right top, color-stop(50%,rgba(250,250,250,1)), color-stop(100%,rgba(254,254,254,0))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(left,  rgba(250,250,250,1) 50%,rgba(254,254,254,0) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(left,  rgba(250,250,250,1) 50%,rgba(254,254,254,0) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(left,  rgba(250,250,250,1) 50%,rgba(254,254,254,0) 100%); /* IE10+ */
+            background: linear-gradient(to right,  rgba(250,250,250,1) 50%,rgba(254,254,254,0) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#00fefefe',GradientType=1 ); /* IE6-9 */
+
+            span {left: 5px;}
+        }
+        &.right {
+            right: 0;
+            background: -moz-linear-gradient(left,  rgba(254,254,254,0) 0%, rgba(250,250,250,1) 50%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(254,254,254,0)), color-stop(50%,rgba(250,250,250,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(left,  rgba(254,254,254,0) 0%,rgba(250,250,250,1) 50%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(left,  rgba(254,254,254,0) 0%,rgba(250,250,250,1) 50%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(left,  rgba(254,254,254,0) 0%,rgba(250,250,250,1) 50%); /* IE10+ */
+            background: linear-gradient(to right,  rgba(254,254,254,0) 0%,rgba(250,250,250,1) 50%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00fefefe', endColorstr='#fafafa',GradientType=1 ); /* IE6-9 */
+
+            span {right: 5px; background-position: -86px -393px;}
+        }
+
+        &:hover {
+            span {@include opacity(1);}
+        }
+
+        &.off {display: none;}
+    }
+}
+
+.jcsdl-advanced-gui {
+    list-style: none; margin: 0; padding: 5px 0;
+    height: 66px; overflow: hidden;
+    position: absolute; top: 0; left: 0;
+
+    li {
+        float: left; display: block;
+        margin: 0 4px;
+
+        &.ui-sortable-helper {
+            @include dropShadow(-2px, 2px, 3px, 0, 0.1);
+        }
+
+        &.jcsdl-token-ph {
+            width: 64px; height: 64px;
+            margin: 0 4px;
+            background: transparent; border: 1px dashed $borderColor; @include rounded(3px);
+
+            &.bracket {width: 44px;}
+        }
+    }
+    .jcsdl-logic-token {cursor: move;}
+}
+
+.jcsdl-advanced-manual {
+    input {
+        display: block; width: 100%; height: 66px; @include boxSizing();
+        color: $color; font-size: 2.5em;
+        border: 0 !important; background: transparent; outline: none;
+    }
+}
+
+.jcsdl-logic-token {
+    display: block; width: 64px; height: 64px; line-height: 64px; padding: 0;
+    float: left; list-style-type: none; position: relative;
+    text-align: center; font-size: 2em; font-weight: bold; color: $colorLight;
+    background: white; border: 1px solid $borderColor; @include rounded(3px);
+
+    .jcsdl-delete-token {
+        display: block; position: absolute; top: -1px; right: -1px;
+        z-index: 5;
+        width: 10px; height: 11px;
+        background: #f9e7e7;
+        border: 1px solid $colorRed; @include rounded(2px);
+
+        span {
+            display: block; width: 5px; height: 5px;
+            margin: 3px 2px;
+            background: url($elementsSprite) no-repeat -149px -278px;
+        }
+    }
+
+    &.bracket {font-size: 2.25em; width: 44px;}
+    &.operator {color: $colorTurquoise; font-size: 1.2em;}
+    &.filter {
+        color: $color;
+        @include transition("color 0.2s ease-in-out, border-color 0.2s ease-in-out");
+
+        &:hover {
+            color: $colorTurquoise;
+            border-color: $colorTurquoise;
+        }
+    }
+
+    &.jcsdl-logic-error {@include glow(red);}
+}
+
+.jcsdl-logic-token {color: $colorLight;}
+
+/* filters logic (AND/OR) */
+.jcsdl-filters-logic {
+    float: left;
+    text-align: left;
+}
+
+a.jcsdl-filters-logic-option {
+    padding: 8px 12px;
+
+    &.disabled {
+        .jcsdl-logic-help {
+            color: $borderColorText;
+        }
+    }
+
+    &.jcsdl-advanced-option {display: none;}
+}
+
+.jcsdl-logic-help {
+    display: inline-block; width: 18px; height: 18px; line-height: 18px;
+    margin: -8px 0; margin-left: 8px;
+    border: 1px solid $borderColor; @include rounded(3px);
+    text-align: center; color: $borderColorText;
+}
+
+/* filters list */
+.jcsdl-filter {
+    overflow: hidden; position: relative; margin: 15px;
+    padding: 0 5px;
+    border: 1px solid $borderColor;
+    @include rounded(3px);
+
+    .jcsdl-filter-options {
+        position: absolute; top: 0; right: 0;
+        padding: 6px;
+        background: #f7f7f7;
+        border: 1px solid $borderColor; border-top: 0; border-right: 0;
+        @include roundedCorner(0, 0, 0, 3px);
+
+        a, span {margin: 0 2px; font-weight: bold;}
+    }
+}
+
+.jcsdl-filter-description {overflow: hidden;}
+
+.jcsdl-filter-info {
+    &.id,
+    &.target,
+    &.field,
+    &.operator,
+    &.value {float: left; margin: 0 10px;}
+
+    &.target,
+    &.input,
+    &.operator {font-weight: bold;}
+}
+
+/* expanded / collapsed filters list */
+.jcsdl-filters-list {
+    &.expanded .jcsdl-filter {
+
+        .jcsdl-filter-target {
+            margin: 0;
+            .font-icon {
+                margin-top: 10px;
+            }
+        }
+        .jcsdl-filter-field {margin: 15px 10px;}
+        .jcsdl-filter-field-input {margin: 15px 10px;}
+        .jcsdl-filter-operator {
+            margin: 31px 0; border-color: $borderColor;
+
+            &.input-select {display: none;}
+        }
+        .jcsdl-filter-info.id {
+            display: none;
+            margin: 22px 10px; margin-right: 0;
+            padding: 0; width: 64px; height: 64px; line-height: 64px;
+            text-align: center; font-size: 26px; color: $colorBlackLight;
+            border-color: $borderColor;
+            @include transition("color 0.2s ease-in-out, border-color 0.2s ease-in-out");
+        }
+        .jcsdl-filter-info.target {margin: 0; margin-left: 5px;}
+        .jcsdl-filter-info.operator {margin: 0 5px; margin-right: -3px;}
+        .jcsdl-filter-info.value {
+            margin: 31px 0;
+            padding: 0 8px; height: 46px; line-height: 46px;
+            font-size: 1.2em;
+            background-color: white;
+        }
+
+        &.on {
+            .jcsdl-filter-info.id {color: $colorTurquoise; border-color: $colorTurquoise;}
+        }
+
+    }
+
+    &.collapsed .jcsdl-filter {
+        padding: 5px;
+
+        .font-icon {
+            display: none;
+        }
+
+        .jcsdl-filter-description {float: left;}
+
+        .jcsdl-filter-info.id {display: none; border: 0; padding: 0;}
+        .jcsdl-filter-info.value {border: 0; padding: 0;}
+
+        .jcsdl-filter-target,
+        .jcsdl-filter-field,
+        .jcsdl-filter-field-input,
+        .jcsdl-filter-operator,
+        .jcsdl-filter-value {
+            float: none; margin: 0;
+            display: inline; width: auto; height: auto;
+            text-indent: 0;
+            background: none; line-height: 20px;
+        }
+        .jcsdl-filter-field {margin: 0 10px;}
+        .jcsdl-filter-operator {font-weight: bold; border: 0 !important;}
+
+        .jcsdl-filter-options {
+            position: relative; float: right;
+            padding: 0;
+            background: transparent; border: 0;
+        }
+
+    }
+}
+
+.jcsdl-advanced-on .jcsdl-filters-list .jcsdl-filter .jcsdl-filter-info.id {display: block;}
+
+/*
+ * FILTER EDITOR VIEW
+ */
+/* JCSDL Carousel */
+.jcsdl-carousel-wrap {
+    overflow: hidden; position: relative;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.jcsdl-carousel-scroll {
+    float: left; margin: 0 10px;
+    display: block; width: 29px; height: 29px;
+    line-height: 29px; text-align: center;
+    background: transparent url($elementsSprite) no-repeat -56px -89px;
+
+    &.right {
+        float: right;
+        background-position: -85px -89px;
+    }
+
+    &:hover {@include opacity(0.6);}
+    &.inactive {@include opacity(0.3);}
+}
+
+.jcsdl-search {
+    display: block;
+    @include boxSizing();
+    position: relative;
+    width: 400px;
+
+    input {
+        display: inline-block;
+        @include boxSizing();
+        width: 400px;
+        height: 36px;
+        line-height: 36px;
+        background: white;
+        border: 1px solid $borderColor;
+        @include transition();
+        padding: 0 10px;
+        font-size: 13px;
+        color: #222;
+        outline: none;
+        z-index: 99999;
+    }
+
+    .jcsdl-search-arrow {
+        display: block;
+        width: 26px;
+        height: 24px;
+        position: absolute;
+        top: 6px;
+        right: 0;
+        background: url($elementsSprite) no-repeat -70px -408px;
+        @include opacity(0.8);
+
+        &:hover {
+            @include opacity(1);
+        }
+    }
+
+    .jcsdl-search-results {
+        display: none;
+        @include boxSizing();
+        position: absolute;
+        top: 36px;
+        left: 0;
+        width: 400px;
+        border: 1px solid #c0c0c0;
+        border-top: 0;
+        z-index: 99998;
+        background: white;
+        max-height: 296px;
+        overflow-y: auto;
+        margin: 0;
+        -webkit-margin-before: 0;
+        -webkit-margin-after: 0;
+        @include dropShadow(3px, 3px, 8px, 0px, 0.12);
+
+        li {
+            display: block;
+            padding: 0 10px;
+            color: #222;
+            line-height: 36px;
+            height: 36px;
+            text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid $borderColor;
+
+            .jcsdl-icon {
+                display: inline-block;
+                margin-right: 10px;
+                width: 33px;
+                height: 33px;
+                @include backgroundSize(1056px, 66px);
+            }
+        }
+
+        .jcsdl-search-item-name {
+            display: inline-block;
+            max-width: 330px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        &:hover {
+            color: #49648e;
+        }
+
+        &.jcsdl-selected {
+            color: #49648e;
+        }
+    }
+
+    &.jcsdl-active {
+        input {
+            border-top-color: #c0c0c0;
+            border-left-color: #c0c0c0;
+            border-right-color: #c0c0c0;
+        }
+    }
+}
+
+/* editor steps */
+.jcsdl-filter-editor {
+    padding: 15px;
+
+    .jcsdl-step {
+        overflow: hidden; text-align: center; position: relative; line-height: normal;
+
+        &.jcsdl-filter-step-value {padding-bottom: 20px;}
+
+        /* various states of target selection */
+        .jcsdl-filter-target-wrap {background: transparent url($selectSprite) no-repeat center -378px;} /* prompt selection */
+        &.selected .jcsdl-filter-target-wrap {background-position: center -553px;} /* only target selected */
+        &.selected.field-selected .jcsdl-filter-target-wrap {background-position: center 8px;} /* a field has been selected */
+
+        /* various states of field selection */
+        .jcsdl-filter-target-field-wrap {}
+        &.selected .jcsdl-filter-target-field-wrap {background: transparent url($selectSprite) no-repeat center -255px;}
+        &.selected.field-selected .jcsdl-filter-target-field-wrap {background-position: center -165px;}
+
+        /* various states of field selection */
+        .jcsdl-filter-target-field-input-wrap {}
+        &.selected .jcsdl-filter-target-field-input-wrap {background: transparent url($selectSprite) no-repeat center -255px;}
+        &.selected.field-selected .jcsdl-filter-target-field-input-wrap {background-position: center -165px;}
+
+        /* when a step is selected it also has shadow underneath */
+        &.selected {background: transparent url($stepBackground) no-repeat bottom center;}
+
+        .jcsdl-target-help {
+            position: absolute; bottom: 3px; left: 50%; margin-left: -47px;
+            display: block; height: 21px; line-height: 21px; width: 94px;
+            background: url($selectSprite) no-repeat -17px -862px;
+            text-align: center; color: #fff; font-weight: normal; font-size: 11px;
+
+            &:hover {text-decoration: underline;}
+        }
+    }
+
+    .jcsdl-filter-target-wrap {
+        height: 145px; padding-top: 30px;
+        .jcsdl-carousel-scroll {margin-top: 40px;}
+    }
+
+    .jcsdl-filter-target-field-wrap {
+        padding-top: 5px; padding-bottom: 40px;
+        .jcsdl-carousel-scroll {margin-top: 25px;}
+    }
+
+    .jcsdl-filter-target-field-input-wrap {
+        padding-top: 5px; padding-bottom: 40px;
+        .jcsdl-carousel-scroll {margin-top: 25px;}
+    }
+
+    .jcsdl-filter-value-input-operators {
+        margin: 10px auto; margin-top: 20px;
+        display: block; width: 75%;
+        text-align: center;
+
+        .jcsdl-icon.operator {
+            float: none; margin: 5px; display: inline-block;
+            /* ie 7 */
+            zoom: 1; *display: inline;
+        }
+
+        &.text {margin-top: 10px; width: auto; text-align: left;}
+    }
+
+    .jcsdl-operators-select {
+        display: block; position: relative;
+        margin: 0 20px;
+        height: 38px; line-height: 37px;
+        padding: 0 10px;
+        border: 1px solid $borderColor; @include rounded(3px);
+        cursor: pointer;
+
+        .jcsdl-operator-label {font-weight: bold; color: $color; font-size: 15px;}
+
+        .jcsdl-dropdown-icon {
+            display: block; width: 39px; height: 38px;
+            position: absolute; top: -1px; right: -1px;
+            overflow: hidden;
+            border: 1px solid $color; @include roundedCorner(0, 3px, 3px, 0);
+            background: url($elementsSprite) no-repeat 0 -278px;
+        }
+
+        &:hover {
+            background: $backgroundSmoked;
+            .jcsdl-dropdown-icon {@include opacity(0.9);}
+        }
+        &:active .jcsdl-dropdown-icon {background-position: 0 -316px;}
+
+        &.active {
+            @include roundedCorner(3px, 3px, 0, 0);
+            .jcsdl-dropdown-icon {
+                background-position: 0 -316px;
+                @include roundedCorner(0, 3px, 0, 0);
+            }
+        }
+
+        &.has-cs {margin-right: 70px;}
+    }
+
+    /* filter editor footer */
+    .jcsdl-footer {text-align: center;}
+}
+
+.jcsdl-filter-cancel {color: $colorLight; font-weight: normal;}
+
+/*
+ * FILTER EDITOR INPUT FIELDS
+ */
+.jcsdl-input-text, .jcsdl-input-number {
+    display: block; margin: 0 20px; position: relative;
+
+    input, .jcsdl-tag-input {
+        display: block; @include boxSizing();
+        padding: 5px 10px; width: 100%; height: 40px;
+        font-size: 1.3em; line-height: 1.5em; color: #444;
+        border: 1px solid $borderColor; @include rounded(3px);
+
+        &.jcsdl-tag-input {
+            height: auto; min-height: 40px; overflow: hidden; position: relative;
+            font-size: 1em;
+            padding: 0;
+
+            .jcsdl-tag {
+                display: block; float: left; margin: 3px; position: relative;
+                padding: 0 5px; height: 32px; line-height: 32px; padding-right: 16px;
+                font-size: 1.1em; color: $color; font-weight: bold;
+                border: 1px solid $borderColorInput; @include rounded(2px);
+                background: lighten($color, 80%);
+
+                a.jcsdl-tag-remove {
+                    display: block; width: 8px; height: 8px; overflow: hidden;
+                    position: absolute; right: 4px; top: 12px;
+                    background: url($elementsSprite) no-repeat -169px -55px;
+                    @include opacity(0.7);
+
+                    &:hover {@include opacity(1);}
+                }
+            }
+
+            .jcsdl-tag-field {
+                float: left;
+
+                input, .jcsdl-tag-field-helper {
+                    @include boxSizing(content-box);
+                    padding: 0; margin: 3px; height: 34px; line-height: 34px; min-width: 230px;
+                    font-size: 17px !important;
+                    border: 0; outline: 0;
+                }
+            }
+        }
+
+        &.jcsdl-regex-active {padding-right: 54px;}
+    }
+
+    /* regex tester */
+    .jcsdl-regex-tester-button {
+        position: absolute; top: 5px; right: 5px;
+        display: block; width: 46px; height: 30px;
+        overflow: hidden; text-indent: -9999px;
+        background: url($elementsSprite) no-repeat -57px -278px;
+
+        &:hover {@include opacity(0.9);}
+        &.active {
+            background-position: -103px -278px;
+            @include opacity(0.75);
+            &:hover {@include opacity(0.75);}
+        }
+    }
+
+    .jcsdl-regex-tester {
+        p {text-align: center; margin: 5px 30px; color: $colorLight;}
+
+        .jcsdl-regex-tester-input-wrap {position: relative;}
+
+        .jcsdl-regex-result {
+            position: absolute; top: 10px; right: 10px;
+            display: none; width: 30px; height: 30px;
+            overflow: hidden;
+            background: url($elementsSprite) no-repeat -57px -308px;
+
+            &.ok {background-position: -57px -308px;}
+            &.err {background-position: -87px -308px;}
+        }
+
+        input {margin: 5px 0; padding-right: 54px;}
+    }
+}
+.jcsdl-input-text {
+    margin-top: 20px;
+
+    .jcsdl-containsnear-distance {
+        display: none; text-align: center; margin: 5px 0;
+
+        span {line-height: 30px;}
+        input {
+            display: inline; display: inline-block; width: 40px; height: 30px;
+            margin: 0 10px;
+            text-align: center;
+        }
+    }
+}
+.jcsdl-input-number {
+    margin: 0 10px;
+    input {margin: 0 auto; width: 175px;}
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - LIST EDITOR */
+.jcsdl-container .jcsdl-list {
+    * {
+        box-sizing: border-box;
+    }
+
+    .jcsdl-list-bar {
+        display: block;
+        height: 32px;
+        text-align: center;
+    }
+
+    .jcsdl-btn {
+        display: inline-block;
+        float: none;
+
+        .jcsdl-picto {
+            display: inline-block;
+            background: url($listIcons) no-repeat -2px -6px;
+            @include backgroundSize(40px, 182px);
+            width: 14px;
+            height: 14px;
+            float: left;
+            margin-right: 5px;
+        }
+
+        &.jcsdl-edit {
+            .jcsdl-picto {background-position: -3px -110px; margin-right: 0;}
+            &:hover, &.jcsdl-active {
+                .jcsdl-picto {background-position: -23px -110px;}
+            }
+        }
+        &.jcsdl-move {
+            .jcsdl-picto {background-position: -3px -136px; margin-right: 0;}
+           &:hover, &.jcsdl-active {
+                .jcsdl-picto {background-position: -23px -136px;}
+            }
+        }
+        &.jcsdl-delete {
+            .jcsdl-picto {background-position: -3px -162px; margin-right: 0;}
+            &:hover, &.jcsdl-active {
+                .jcsdl-picto {background-position: -23px -162px;}
+            }
+        }
+        &.jcsdl-import {
+            .jcsdl-picto {background-position: -3px -84px;}
+            &:hover .jcsdl-picto {background-position: -23px -84px;}
+        }
+        &.jcsdl-sort-az {
+            .jcsdl-picto {background-position: -3px -32px;}
+            &:hover .jcsdl-picto {background-position: -23px -32px;}
+        }
+        &.jcsdl-copy {
+            .jcsdl-picto {background-position: -3px -58px;}
+            &:hover .jcsdl-picto {background-position: -23px -58px;}
+        }
+    }
+
+    .jcsdl-list-search {
+        display: inline-block;
+        height: 32px;
+        width: 200px;
+        margin: 0 2px;
+        margin-top: -2em;
+        line-height: 18px;
+        padding: 4px 6px;
+        font-size: 13px;
+        color: $colorLight;
+        background: white;
+        vertical-align: middle;
+        border: 1px solid $borderColor;
+        @include rounded(3px);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+
+    .jcsdl-list-cta {
+        margin-top: 10px;
+        border: 1px solid $colorTurquoise;
+        border-left-width: 3px;
+        padding: 10px;
+        background: lighten($colorTurquoise, 35%);
+    }
+
+    .jcsdl-list-container {
+        overflow: auto;
+        margin-bottom: 0;
+    }
+
+    .jcsdl-list-elements {
+        list-style: none;
+        display: block;
+        padding-left: 0;
+        margin-bottom: 0;
+        max-height: 310px;
+        overflow: auto;
+
+        input {
+            display: inline-block;
+            margin: 0;
+            line-height: 18px;
+            padding: 4px 6px;
+            font-size: 13px;
+            background: white;
+            border: 1px solid $borderColor;
+            vertical-align: middle;
+            @include rounded(2px);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+            cursor: pointer;
+
+            &.jcsdl-list-add-input {
+                width: 190px;
+                float: left;
+                clear: none;
+            }
+        }
+    }
+
+    .jcsdl-list-add {
+        display: block;
+        float: left;
+        margin: 6px;
+        margin-left: 0;
+        margin-right: 9px;
+        padding-right: 5px;
+        border-right: 1px solid $borderColor;
+        width: 260px;
+
+        .jcsdl-btn-add {
+            height: 40px;
+            padding-top: 11px;
+            margin-left: 10px;
+        }
+    }
+
+
+
+    .jcsdl-list-item {
+        display: block;
+        height: 40px;
+        line-height: 30px;
+        position: relative;
+        margin: 6px 3px;
+        float: left;
+        background: $backgroundSmoked;
+        border: 1px solid $borderColor;
+        padding: 5px 11px;
+        @include rounded(2px);
+        overflow: hidden;
+
+        .jcsdl-list-item-input {
+            display: none;
+            height: 30px;
+        }
+
+        .jcsdl-list-item-label {
+            display: inline-block;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .jcsdl-list-item-mode-bar {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: transparent;
+        }
+
+        &:hover {
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+        }
+
+        &.jcsdl-list-active {
+            padding: 3px 5px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+
+            .jcsdl-list-item-label {
+                display: none;
+            }
+
+            .jcsdl-list-item-input {
+                display: inline-block;
+                padding: 11px 5px;
+                max-width: 200px;
+            }
+        }
+    }
+
+    .jcsdl-mode-edit .jcsdl-list-item {
+        cursor: text;
+
+        .jcsdl-list-item-mode-bar {
+            display: none;
+        }
+    }
+
+    .jcsdl-mode-delete {
+        .jcsdl-list-item {
+            cursor: pointer;
+        }
+
+        .jcsdl-list-item-mode-bar {
+            display: block;
+            background: red;
+        }
+    }
+
+    .jcsdl-mode-move {
+        .jcsdl-list-item {
+            cursor: move;
+        }
+
+        .jcsdl-list-item-mode-bar {
+            display: block;
+            background: $color;
+        }
+    }
+
+    .sortable-placeholder {
+        display: block;
+        position: relative;
+        margin: 6px 3px;
+        float: left;
+        width: 100px;
+        height: 40px;
+        border: 1px dashed $borderColor;
+        @include rounded(2px);
+    }
+}
+
+.jcsdl-popup .jcsdl-import-view {
+    box-sizing: border-box;
+    overflow: auto;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .jcsdl-btn {
+        display: inline-block;
+        float: none;
+    }
+
+    h4 {
+        margin-top: 0;
+    }
+
+    label {
+        margin: 5px 0;
+    }
+
+    .jcsdl-draganddrop {
+        border: 2px dashed $borderColor;
+        padding: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        @include transition(all 0.14s ease-out);
+
+        p {
+            margin: 0;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        &.over {
+            border-color: transparent;
+            box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+        }
+    }
+
+    .jcsdl-import-buttons {
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    textarea {
+        display: inline-block;
+        height: 100px;
+        width: 100%;
+        line-height: 18px;
+        padding: 4px 6px;
+        font-size: 14px;
+        background: white;
+        border: 1px solid $borderColor;
+        @include rounded(2px);
+        margin-bottom: 15px;
+    }
+
+    .jcsdl-import-error {
+        color: red;
+        text-align: center;
+    }
+
+    .jcsdl-table-container {
+        max-width: 670px;
+        max-height: 330px;
+        overflow: auto;
+        margin: 0 auto;
+    }
+
+    table {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 10px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        border: 1px solid $borderColor;
+
+        td {
+            padding: 5px 10px;
+        }
+
+        tr.ignored {
+            td {
+                text-decoration: line-through;
+                color: $borderColor;
+            }
+        }
+
+        thead {
+            th {
+                background: $borderColor;
+                padding: 5px 10px;
+                text-align: center;
+            }
+
+            &.csdl-error th {
+                background: #fdd;
+            }
+        }
+
+        td, th {border: 1px solid $borderColor;}
+        tr:first-child th {border-top: 0;}
+        tr:last-child td {border-bottom: 0;}
+        tr td:first-child, tr th:first-child {border-left: 0;}
+        tr td:last-child, tr th:last-child {border-right: 0;}
+
+        tfoot tr td {
+            text-align: center;
+            font-size: 0.8em;
+        }
+    }
+}
+
+.jcsdl-operator-cs {float: right !important; cursor: pointer; margin: 0 !important; margin-right: 20px !important;}
+
+.jcsdl-input-select {
+    margin: 0 30px;
+    text-align: center;
+
+    .jcsdl-input-select-option.jcsdl-btn {
+        margin: 10px; float: none;
+        display: inline-block; padding: 0 10px; height: 25px; line-height: 25px;
+        font-size: 13px;
+        @include rounded(2px);
+        @include opacity(0.75);
+
+        /* ie7 */
+        zoom: 1;
+        *display: inline;
+
+        &.selected {@include opacity(1); border-color: $colorTurquoise; color: $colorTurquoise;}
+    }
+}
+
+.jcsdl-input-slider {
+    margin: 10px 30px; margin-bottom: 0;
+    text-align: center;
+
+    .jcsdl-slider-controls {
+        margin: 0 auto;
+        width: 200px; padding: 5px 0; overflow: hidden;
+
+        .jcsdl-slider-minus, .jcsdl-slider-plus {
+            float: right; margin: 13px 10px; overflow: hidden;
+            display: block; width: 14px; height: 14px;
+            background: transparent url($elementsSprite) no-repeat -115px -89px;
+            @include opacity(0.7);
+            -webkit-touch-callout: none; /* prevent callout menu on iOS */
+
+            &:active {position: relative; top: 1px;}
+            &:hover {@include opacity(1);}
+        }
+        .jcsdl-slider-minus {float: left; background-position: -129px -89px;}
+
+        .jcsdl-slider-input {
+            display: block; margin: 0 auto;
+            padding: 5px; width: 110px;
+            font-size: 24px; color: #1b1b1f; text-align: center;
+            border: 1px solid $borderColor;
+            @include rounded(3px);
+        }
+    }
+
+    .jcsdl-slider-wrap {
+        display: block; overflow: hidden; position: relative;
+        min-height: 65px;
+
+        .jcsdl-slider-icon {
+            display: none; float: left; margin: 0 10px;
+            width: 80px; height: 80px;
+            background: url($otherIconsSprite) no-repeat 0 0;
+
+            &.max {float: right;}
+        }
+    }
+
+    .jcsdl-slider-container {position: relative; padding-top: 12px;}
+
+    .jcsdl-slider-label {
+        position: absolute; top: 0; left: 5px;
+        text-align: left;
+        color: #444; font-size: 0.9em;
+
+        &.max {right: 5px; left: auto; text-align: right;}
+    }
+
+    .jcsdl-slider {
+        display: block; margin: 10px 15px; margin-bottom: 7px;
+        height: 12px;
+        cursor: pointer;
+        background: transparent url($elementsSprite) repeat-x center -228px;
+        border: 0; @include rounded(0px);
+
+        .ui-slider-handle {
+            top: 0; margin-left: -1em;
+            display: block; width: 30px; height: 40px;
+            cursor: pointer;
+            background: transparent url($elementsSprite) no-repeat -152px -83px;
+            border: 0;
+            outline: none;
+        }
+    }
+
+    .jcsdl-slider-bottom {
+        display: block; overflow: hidden; margin: 0 8px;
+        height: 15px;
+
+        .jcsdl-slider-bottom-left, .jcsdl-slider-bottom-right {
+            display: block; width: 15px; height: 15px;
+            float: left;
+            background: transparent url($elementsSprite) no-repeat 0 -213px;
+        }
+        .jcsdl-slider-bottom-right {float: right; background-position: -31px -213px;}
+
+        .jcsdl-slider-bottom-line {
+            display: block; height: 15px; margin: 0 15px;
+            background: transparent url($elementsSprite) repeat-x 0 -198px;
+        }
+    }
+}
+
+.jcsdl-map {
+    text-align: center; position: relative;
+
+    .jcsdl-map-search {
+        display: block; margin: 10px auto; width: 50%; padding: 5px;
+        font-size: 15px;
+        border: 1px solid $borderColor; @include rounded(3px);
+    }
+
+    .jcsdl-map-canvas {
+        display: block; margin: 10px auto;
+        min-width: 320px; max-width: 600px; width: 90%; height: 350px;
+    }
+
+    .jcsdl-map-instructions {
+        display: block; margin: 0 auto; width: 70%;
+        text-align: center; line-height: 1.3em;
+    }
+
+    .jcsdl-clear-map {
+        display: block; width: 108px;
+        position: absolute; top: 45px; left: 50%; margin-left: -60px; z-index: 100;
+        background: #fff; border: 1px solid #717b87;
+        font-size: 13px; color: #000; font-weight: bold; padding: 1px 6px;
+        @include dropShadow(0, 2px, 4px, 0, 0.4);
+        display: none;
+
+        &:hover {color: #000;}
+    }
+
+    .jcsdl-map-coordinates,
+    .jcsdl-map-area {
+        margin: 0 10px; text-align: center;
+        span {margin-left: 10px;}
+    }
+
+    .jcsdl-map-coordinates {
+        label {clear: both;}
+        ul {
+            margin: 0; padding: 0;
+            li {display: inline; margin: 5px;}
+        }
+    }
+
+    .jcsdl-map-area {}
+}
+
+/* filter editor input fields overrides for the filters list view */
+/* expanded view */
+.jcsdl-filter-info.value {
+    &.input-select {
+        padding: 0; border: 0;
+
+        .jcsdl-input-select {
+            margin: 0;
+
+            .jcsdl-input-select-option {margin: 3px 5px;}
+            .jcsdl-input-select-more {font-size: 13px; line-height: 25px;}
+        }
+    }
+}
+/* collapsed view overrides */
+.jcsdl-filters-list.collapsed .jcsdl-filter-info.value {
+    &.input-select {
+        .jcsdl-input-select {
+            .jcsdl-input-select-option {
+                display: inline; height: auto; line-height: 1em; padding: 0;
+                color: $colorLight; font-weight: normal;
+                background: none; border: 0;
+
+                span {top: 0 !important;}
+            }
+        }
+    }
+}
+
+
+/*
+ * ICONS
+ */
+.jcsdl-icon.target {
+    width: 110px; height: 110px; margin-right: 35px;
+    color: $colorMuted;
+}
+
+.jcsdl-icon.target.selected {
+    color: $colorTurquoise;
+}
+
+/* field icons sets */
+.jcsdl-icon.field {
+    background-repeat: no-repeat;
+    margin: 0; margin-right: 20px;
+    padding: 0;
+    color: $colorMuted;
+    .font-icon {
+        font-size: 4em;
+    }
+    &.selected {
+        color: $colorTurquoise;
+    }
+}
+
+.jcsdl-icon.input {
+    background: url($otherIconsSprite) no-repeat 0 0;
+
+    &.icon-geo_radius   {background-position: 0 -400px;         &.selected {background-position: -80px -400px;}}
+    &.icon-geo_polygon  {background-position: 0 -480px;         &.selected {background-position: -80px -480px;}}
+    &.icon-geo_box      {background-position: 0 -560px;         &.selected {background-position: -80px -560px;}}
+    &.icon-geo_text     {background-position: 0 80px;           &.selected {background-position: -80px 80px;}}
+}
+
+.jcsdl-icon.operator {
+    width: 46px; height: 46px;
+    text-indent: -9999px; overflow: hidden; 
+    background: url($operatorIconsSprite) no-repeat 0 0;
+    border: 1px solid $colorBlackLight; @include rounded(2px);
+    @include opacity(0.75);
+
+    &.icon-contains     {background-position: 0 0;              &.selected {background-position: 0 -184px;}}
+    &.icon-substr       {background-position: -46px 0;          &.selected {background-position: -46px -184px;}}
+    &.icon-contains_any {background-position: -92px 0;          &.selected {background-position: -92px -184px;}}
+    &.icon-contains_near{background-position: -138px 0;         &.selected {background-position: -138px -184px;}}
+    &.icon-exists       {background-position: 0 -46px;          &.selected {background-position: 0 -230px;}}
+    &.icon-different    {background-position: -46px -46px;      &.selected {background-position: -46px -230px;}}
+    &.icon-equals       {background-position: -92px -46px;      &.selected {background-position: -92px -230px;}}
+    &.icon-in           {background-position: -138px -46px;     &.selected {background-position: -138px -230px;}}
+    &.icon-greaterThan  {background-position: 0 -92px;          &.selected {background-position: 0 -276px;}}
+    &.icon-lowerThan    {background-position: -46px -92px;      &.selected {background-position: -46px -276px;}}
+    &.icon-regex_partial{background-position: -92px -92px;      &.selected {background-position: -92px -276px;}}
+    &.icon-regex_exact  {background-position: -138px -92px;     &.selected {background-position: -138px -276px;}}
+    &.icon-cs {
+        width: 38px; height: 38px;
+        background-position: -4px -142px;           &.selected {background-position: -4px -326px;}
+    }
+    &.icon-wildcard     {background-position: -46px -142px;     &.selected {background-position: -46px -326px;}}
+    &.icon-all          {background-position: -92px -142px;     &.selected {background-position: -92px -326px;}}
+    &.icon-url_in       {background-position: -138px -142px;    &.selected {background-position: -138px -326px;}}
+
+    &:hover {@include opacity(0.7);}
+    &.selected {@include opacity(1); border-color: $colorTurquoise;}
+}
+
+/* overrides for the list view */
+.jcsdl-filter-info .jcsdl-icon.operator {
+    width: 46px; height: 46px; @include roundedCorner(2px, 0, 0, 2px);
+
+    &.icon-cs {@include rounded(0); border-left: 0; background-position: 0 -138px;      &.selected {background-position: 0 -322px;}}
+}
+
+.jcsdl-dropdown {
+    display: block;
+    width: 250px;
+    z-index: 10;
+    position: relative;
+    top: -10px;
+    margin-left: 20px;
+    text-align: left;
+    border: 1px solid $borderColor;
+    border-top: 0;
+    font-size: $fontSize;
+    font-family: $fontFamily;
+    color: $colorLight;
+    @include roundedCorner(0, 0, 3px, 3px);
+    background: white;
+
+    /* building blocks */
+    a {color: $color; text-decoration: none;
+        &:hover {color: lighten($color, 5%);}
+    }
+
+    .jcsdl-dropdown-option {
+        display: block; overflow: hidden;
+        border-top: 1px solid $borderColor;
+        cursor: pointer;
+
+
+
+        .jcsdl-icon {
+            border: 0; margin: 0; margin-left: 5px; @include opacity(1);
+            &:hover {@include opacity(1);}
+        }
+
+        .jcsdl-dropdown-details-trigger {
+            display: block; float: right;
+            height: 46px; width: 38px; overflow: hidden;
+            text-indent: -9999px;
+            background: url($elementsSprite) no-repeat 0 -393px;
+
+            &:hover {background-position: -38px -393px;}
+        }
+
+        .jcsdl-dropdown-option-desc {margin-left: 56px; margin-right: 38px; padding: 5px 0;}
+
+        .jcsdl-operator-label {
+            margin-bottom: 3px; color: $colorBlack; line-height: 1.2em; font-weight: bold;
+            a {color: $color;}
+        }
+
+        .jcsdl-operator-desc {font-size: 0.9em; color: $colorLight; line-height: 1.2em;}
+
+        &:hover {background: #f8f8f8;}
+
+        &:first-child {
+            border-top: 0;
+        }
+    }
+}
+
+/* JCSDL Popup */
+.jcsdl-popup {
+    display: block;
+    position: absolute; z-index: 100;
+    @include rounded(4px);
+    @include dropShadow(0, 0, 8px, 0, 0.8);
+
+    .jcsdl-popup-header {
+        display: block; height: 39px; overflow: hidden; position: relative; padding: 0 10px;
+        background: url($elementsSprite) repeat-x 0 -354px;
+        border: 1px solid #1d3550; border-bottom: 0;
+        @include roundedCorner(3px, 3px, 0, 0);
+
+        h4 {
+            margin: 0; overflow: hidden;
+            height: 39px; line-height: 39px;
+            font-size: 1.1em; font-weight: bold; color: #fff;
+        }
+
+        .jcsdl-popup-close {
+            position: absolute; top: 0; right: 0;
+            display: block; width: 30px; height: 40px; overflow: hidden;
+            text-indent: -9999px;
+            background: url($elementsSprite) no-repeat -118px -310px;
+
+            &:hover {@include opacity(0.7);}
+            &:active {top: 1px;}
+        }
+    }
+
+    .jcsdl-popup-content {
+        display: block; padding: 10px; overflow: auto;
+        background: #fff;
+        border: 1px solid $borderColor; border-top: 0;
+        text-align: left;
+        @include roundedCorner(0, 0, 3px, 3px);
+
+        p {text-align: left;}
+    }
+
+    .jcsdl-popup-loading {
+        display: block; width: 32px; height: 32px; overflow: hidden;
+        margin: 10px auto;
+        background: url($loader) no-repeat 0 0;
+    }
+}
+
+.jcsdl-overlay {
+    position: fixed; top: 0; left: 0; z-index: 100;
+    width: 100%; height: 100%;
+    background: #fff; @include opacity(0.7);
+}
+
+/* popup content styling */
+.jcsdl-popup-content {
+    .group-content {clear: both;}
+    .field {
+        margin-bottom: 2em;
+
+        .field-label {font-weight: bold; font-size: 18px; margin-bottom: .5em;}
+    }
+    p, iframe, blockquote, pre, abbr, cite, code, q, s, small, strike, sub, sup, tt, b, u, i, center, dl, dt, dd, caption, label, legend {margin: 0; padding: 0; border: 0; outline: 0; font-size: 1em; vertical-align: baseline; font: inherit;}
+    p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table {margin-bottom: .5em;}
+
+    .jcsdl-copy-to-clipboard {
+        position: absolute;
+        top: 41px;
+        right: -5px;
+        width: 14px;
+        text-align: center;
+        background: #f5f5f5;
+        opacity: 0;
+        @include transition("all 0.2s ease-in-out");
+
+        .jcsdl-picto {
+            display: inline-block;
+            overflow: hidden;
+            margin-right: 8px;
+            width: 14px;
+            height: 14px;
+            background: url($elementsSprite) no-repeat -103px -394px;
+        }
+
+        &.copied {
+            border-color: $colorTurquoise;
+            color: $colorTurquoise;
+
+            .jcsdl-picto {
+                background-position: -118px -394px;
+            }
+        }
+
+        &.hover {
+            color: $colorTurquoise;
+
+            .jcsdl-picto {
+                background-position: -118px -394px;
+            }
+        }
+    }
+
+    &:hover {
+        .jcsdl-copy-to-clipboard {
+            opacity: 1;
+        }
+    }
+}
+
+/* CSDL syntax highlighting */
+code.jcsdl-code {
+    font-family: Courier, monospace;
+
+    .jcsdl-code-parenthesis {font-weight: bold;}
+    .jcsdl-code-logical-operator {color: red;}
+    .jcsdl-code-logical-operator-not {color: red;}
+    .jcsdl-code-target {color: blue;}
+    .jcsdl-code-operator {color: red;}
+    .jcsdl-code-string {color: green;}
+    .jcsdl-code-number {color: green;}
+}
+
+/* IE fixes */
+.jcsdl-container.msie {
+    .jcsdl-filter-value-input-operators .operator {text-indent: 0;}
+    .jcsdl-input-text, .jcsdl-input-number {
+        input, .jcsdl-tag-input {width: 90%;}
+    }
+}
+
+.tipsy {
+    font-size: $fontSize; font-family: $fontFamily; color: $colorLight; line-height: 1.5em;
+
+    .tipsy-inner {background-color: #fff; color: #000; border: 2px solid $colorTurquoise; @include rounded(5px); @include dropShadow(0, 0, 3px);}
+    .tipsy-arrow {
+        background: none;
+        width: 0 !important; height: 0 !important;
+        border-width: 12px; border-style: solid;
+        border-color: $colorTurquoise transparent transparent transparent;
+        border-bottom: 0;
+    }
+    &.tipsy-s .tipsy-arrow {top: 100%; left: 50%; bottom: auto; margin-top: -5px; margin-left: -13px;}
+}
+
+/* retina elements sprite */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+    only screen and (-o-min-device-pixel-ratio: 3/2),
+    only screen and (min--moz-device-pixel-ratio: 1.5),
+    only screen and (min-device-pixel-ratio: 1.5) {
+
+    .jcsdl-elements-sprite {
+        background-image: url($elementsSpriteRetina);
+        @include backgroundSize(181px, 500px);
+    }
+
+    .jcsdl-step {
+        .jcsdl-filter-target-wrap {
+            background-image: url($selectSpriteRetina);
+            @include backgroundSize(127px, 900px);
+        }
+
+        &.selected .jcsdl-filter-target-field-wrap {
+            background-image: url($selectSpriteRetina);
+            @include backgroundSize(127px, 900px);
+        }
+
+        &.selected .jcsdl-filter-target-field-input-wrap {
+            background-image: url($selectSpriteRetina);
+            @include backgroundSize(127px, 900px);
+        }
+
+        .jcsdl-target-help {
+            background-image: url($selectSpriteRetina);
+            @include backgroundSize(127px, 900px);
+        }
+    }
+
+    .jcsdl-slider-icon {
+        background-image: url($otherIconsSpriteRetina);
+        @include backgroundSize(160px, 880px);
+    }
+
+    .jcsdl-icon.target {
+        @include backgroundSize(3520px, 220px);
+    }
+
+    .jcsdl-icon.operator {
+        background-image: url($operatorIconsSpriteRetina);
+        @include backgroundSize(184px, 368px);
+    }
+
+    .jcsdl-icon.input {
+        background-image: url($otherIconsSpriteRetina);
+        @include backgroundSize(160px, 880px);
+    }
+
+    .jcsdl-icon.field {
+        @include backgroundSize(800px, 1520px);
+
+        &.icon-twitter_activity,
+        &.icon-location_by_country,
+        &.icon-basic_demographics,
+        &.icon-interests,
+        &.icon-twitter_influence,
+        &.icon-first_language,
+        &.icon-number_of_accounts_followed,
+        &.icon-professions,
+        &.icon-usa,
+        &.icon-city,
+        &.icon-services_and_technologies,
+        &.icon-large_accounts_followed,
+        &.icon-twitter_settings,
+        &.icon-older_than,
+        &.icon-younger_than,
+        &.icon-ms_clothes,
+        &.icon-ms_shop,
+        &.icon-ms_food,
+        &.icon-useragent,
+        &.icon-url_hash,
+        &.icon-share_hash,
+        &.icon-cname,
+        &.icon-ref_url,
+        &.icon-ref_domain,
+        &.icon-country_code,
+        &.icon-geo_region_code,
+        &.icon-geo_region,
+        &.icon-timezone,
+        &.icon-contributions,
+        &.icon-talkpage,
+        &.icon-diff,
+        &.icon-changetype,
+        &.icon-changeadded,
+        &.icon-changeremoved,
+        &.icon-diff-from,
+        &.icon-diff-to,
+        &.icon-externallinks,
+        &.icon-namespace,
+        &.icon-namespacecode,
+        &.icon-newlength,
+        &.icon-oldlength,
+        &.icon-pageid,
+        &.icon-parentid,
+        &.icon-relationship,
+        &.icon-work-status,
+        &.icon-accounts_categories {
+            background-image: url($fieldDbwIconsSpriteRetina);
+            @include backgroundSize(801px, 800px);
+        }
+
+        /* additional icon set (links, opengraph, newscred - lon) */
+        &.icon-normalized_url,
+        &.icon-hops,
+        &.icon-http_code,
+        &.icon-metatags,
+        &.icon-charset,
+        &.icon-newskeywords,
+        &.icon-standout,
+        &.icon-site_name,
+        &.icon-email,
+        &.icon-phone_number,
+        &.icon-fax_number,
+        &.icon-street_address,
+        &.icon-locality,
+        &.icon-postal_code,
+        &.icon-activity,
+        &.icon-sport,
+        &.icon-bar,
+        &.icon-company,
+        &.icon-cafe,
+        &.icon-hotel,
+        &.icon-restaurant,
+        &.icon-cause,
+        &.icon-sports_league,
+        &.icon-sports_team,
+        &.icon-band,
+        &.icon-government,
+        &.icon-non_profit,
+        &.icon-school,
+        &.icon-university,
+        &.icon-actor,
+        &.icon-athlete,
+        &.icon-author,
+        &.icon-director,
+        &.icon-musician,
+        &.icon-politician,
+        &.icon-public_figure,
+        &.icon-landmark,
+        &.icon-state_province,
+        &.icon-album,
+        &.icon-book,
+        &.icon-drink,
+        &.icon-food,
+        &.icon-game,
+        &.icon-movie,
+        &.icon-product,
+        &.icon-song,
+        &.icon-tv_show,
+        &.icon-blog,
+        &.icon-website,
+        &.icon-fulltext,
+        &.icon-circulation,
+        &.icon-company_type,
+        &.icon-founded,
+        &.icon-media_type,
+        &.icon-source_name,
+        &.icon-card,
+        &.icon-site,
+        &.icon-site_id,
+        &.icon-creator,
+        &.icon-creator_id,
+        &.icon-image_width,
+        &.icon-image_height,
+        &.icon-twitter,
+        &.icon-player_width,
+        &.icon-player_height,
+        &.icon-player_stream,
+        &.icon-player_stream_content_type,
+        &.icon-player,
+        &.icon-mention_ids,
+        &.icon-status,
+        &.icon-user_verified,
+        &.icon-confidence,
+        &.icon-entities_name,
+        &.icon-entities_type,
+        &.icon-region,
+        &.icon-keywords {
+            background-image: url($fieldLonIconsSpriteRetina);
+            @include backgroundSize(855px, 2365px);
+        }
+
+        &.icon-tumblractivity,
+        &.icon-tumblrtype,
+        &.icon-state,
+        &.icon-source-blogid,
+        &.icon-dest-blogid,
+        &.icon-dest-postid,
+        &.icon-root-blogid,
+        &.icon-root-postid,
+        &.icon-blogid,
+        &.icon-blog_name,
+        &.icon-tumblrtitle,
+        &.icon-body,
+        &.icon-format,
+        &.icon-post_url,
+        &.icon-slug,
+        &.icon-text,
+        &.icon-source_html,
+        &.icon-source_url,
+        &.icon-source_title,
+        &.icon-note_count,
+        &.icon-question,
+        &.icon-answer,
+        &.icon-asking_name,
+        &.icon-asking_url,
+        &.icon-video_url,
+        &.icon-duration,
+        &.icon-artist,
+        &.icon-track_name,
+        &.icon-album,
+        &.icon-plays,
+        &.icon-audio_url,
+        &.icon-link,
+        &.icon-description,
+        &.icon-caption,
+        &.icon-meta-url,
+        &.icon-meta-type,
+        &.icon-meta-description,
+        &.icon-likes_local,
+        &.icon-likes_global,
+        &.icon-reblogged_global,
+        &.icon-from-id,
+        &.icon-from-url,
+        &.icon-from-name,
+        &.icon-from-title,
+        &.icon-root-id,
+        &.icon-root-url,
+        &.icon-root-name,
+        &.icon-root-title,
+        &.icon-meta,
+        &.icon-reblogged {
+            background-image: url($fieldTumblrIconsSpriteRetina);
+            @include backgroundSize(800px, 880px);
+        }
+
+        &.icon-actor-id,
+        &.icon-actor-display_name,
+        &.icon-actor-url,
+        &.icon-object,
+        &.icon-attachment,
+        &.icon-in_reply_to-id,
+        &.icon-in_reply_to-url,
+        &.icon-provider_title {
+            background-image: url($fieldGooglePlusIconsSpriteRetina);
+            @include backgroundSize(800px, 160px);
+        }
+
+        &.icon-filter,
+        &.icon-low_resolution,
+        &.icon-standard_resolution,
+        &.icon-width,
+        &.icon-height,
+        &.icon-caption_from,
+        &.icon-from,
+        &.icon-location-id,
+        &.icon-location-name,
+        &.icon-users_in_photo,
+        &.icon-attribution-name,
+        &.icon-attribution-website,
+        &.icon-bio,
+        &.icon-media {
+            background-image: url($fieldInstagramIconsSpriteRetina);
+            @include backgroundSize(800px, 240px);
+        }
+
+        &.icon-message_type,
+        &.icon-direct_message,
+        &.icon-privacy,
+        &.icon-sender_type,
+        &.icon-client_type,
+        &.icon-content_excerpt,
+        &.icon-rich,
+        &.icon-plain,
+        &.icon-parsed,
+        &.icon-thread,
+        &.icon-shares,
+        &.icon-updates,
+        &.icon-group,
+        &.icon-office365_url,
+        &.icon-sender,
+        &.icon-followers,
+        &.icon-following,
+        &.icon-job_title,
+        &.icon-web_url {
+            background-image: url($fieldYammerIconsSpriteRetina);
+            @include backgroundSize(800px, 320px);
+        }
+
+        &.icon-comment-id,
+        &.icon-from-category,
+        &.icon-from-id,
+        &.icon-from-name,
+        &.icon-link,
+        &.icon-message,
+        &.icon-name,
+        &.icon-object_id,
+        &.icon-page_category,
+        &.icon-page_id,
+        &.icon-page_link,
+        &.icon-page_name,
+        &.icon-page_username,
+        &.icon-post_id,
+        &.icon-post_content,
+        &.icon-post_link,
+        &.icon-post_type,
+        &.icon-story,
+        &.icon-picture,
+        &.icon-application-id,
+        &.icon-application-name,
+        &.icon-page {
+            background-image: url($fieldFBPagesIconsSpriteRetina);
+            @include backgroundSize(800px, 400px);
+        }
+
+        &.icon-byline,
+        &.icon-length,
+        &.icon-docinfo-lnlni,
+        &.icon-feedtype,
+        &.icon-indexing,
+        &.icon-industry,
+        &.icon-organization,
+        &.icon-state,
+        &.icon-subject,
+        &.icon-ticker,
+        &.icon-load-date,
+        &.icon-photos-caption,
+        &.icon-place-geo,
+        &.icon-displayname,
+        &.icon-favourites-count,
+        &.icon-province,
+        &.icon-original-pic,
+        &.icon-parent-reblog,
+        &.icon-reply,
+        &.icon-origin-url,
+        &.icon-thread-url {
+            background-image: url($fieldWeiboIconsSpriteRetina);
+            @include backgroundSize(800px, 480px);
+        }
+
+        &.icon-subtype,
+        &.icon-permalink {
+            background-image: url($fieldIntenseDebateWordpressIconsSpriteRetina);
+            @include backgroundSize(800px, 80px);
+        }
+    }
+
+}

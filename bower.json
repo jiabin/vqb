@@ -1,0 +1,19 @@
+{
+  "name": "vqb",
+  "version": "2.4.0",
+  "main": [
+    "./minified/jcsdl.definition.js",
+    "./minified/jcsdl.min.js",
+    "./minified/jcsdl.min.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "demo",
+    "src",
+    "bundy.js"
+  ],
+  "license": "MIT",
+  "keywords": ["mediasift", "datasift", "csdl", "visual query builder", "jcsdl"]
+}

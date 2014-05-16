@@ -1,0 +1,7 @@
+*~
+.tmp_*
+.project
+.DS_Store
+*.scssc
+/nbproject
+node_modules
