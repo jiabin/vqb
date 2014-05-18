@@ -77,6 +77,42 @@ JCSDL.Loader.addComponent(function($, undefined) {
 			}
 		},
 
+        /*
+         * DATE FIELD
+         */
+        date : {
+            init : function(info) {
+                var $view = this.getTemplate('valueInput_date');
+
+                // init picker
+                $view.find('input[type=text]:first').pickadate();
+
+                return $view;
+            },
+
+            setValue : function($view, info, val, operator) {
+                $view.find('input[type=text]:first').val(val);
+            },
+
+            getValue : function($view, info, operator) {
+                return $view.find('input[type=text]:first').val();
+            },
+
+            displayValue : function(info, val, filter) {
+
+                var fl = (info.type == 'float');
+                val = val.split(',');
+
+                var show = val.slice(0, 3);
+                $.each(show, function(i, v) {
+                    show[i] = (fl) ? parseFloat(v).format(2) : v;
+                });
+
+                var more = (show.length < val.length) ? ' and ' + (val.length - show.length) + ' more...' : '';
+                return show.join(', ') + more;
+            }
+        },
+
 		/*
 		 * NUMBER FIELD
 		 */

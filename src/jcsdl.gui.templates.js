@@ -241,6 +241,13 @@ JCSDL.Loader.addComponent(function($, undefined) {
 			'</div>'
 		].join('')),
 
+        // date input
+        valueInput_date : $([
+            '<div class="jcsdl-input-date">',
+                '<input type="text" placeholder="Click here to open date picker..." />',
+            '</div>'
+        ].join('')),
+
 		// number input
 		valueInput_number : $([
 			'<div class="jcsdl-input-number">',

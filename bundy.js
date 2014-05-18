@@ -11,6 +11,8 @@ bundy.js([
     'src/lib/jquery.tipsy.js',
     'src/lib/jquery.simulate.js',
     'src/lib/ZeroClipboard.js',
+    'src/lib/pickadate/picker.js',
+    'src/lib/pickadate/picker.date.js',
     'src/jcsdl.parser.js',
     'src/jcsdl.gui.templates.js',
     'src/jcsdl.gui.inputs.js',
@@ -27,6 +29,8 @@ bundy.copy('src/jcsdl.definition.js', 'minified/jcsdl.definition.js');
 bundy.css([
     'src/lib/jquery.ui.custom.min.css',
     'src/lib/jquery.tipsy.css',
+    'src/lib/pickadate/themes/default.css',
+    'src/lib/pickadate/themes/default.date.css',
     'src/jcsdl.css'
 ], 'minified/jcsdl.min.css');
 

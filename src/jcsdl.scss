@@ -820,7 +820,7 @@ a.jcsdl-filters-logic-option {
 /*
  * FILTER EDITOR INPUT FIELDS
  */
-.jcsdl-input-text, .jcsdl-input-number {
+.jcsdl-input-text, .jcsdl-input-number, .jcsdl-input-date {
     display: block; margin: 0 20px; position: relative;
 
     input, .jcsdl-tag-input {
@@ -1707,7 +1707,7 @@ code.jcsdl-code {
 /* IE fixes */
 .jcsdl-container.msie {
     .jcsdl-filter-value-input-operators .operator {text-indent: 0;}
-    .jcsdl-input-text, .jcsdl-input-number {
+    .jcsdl-input-text, .jcsdl-input-number, .jcsdl-input-date {
         input, .jcsdl-tag-input {width: 90%;}
     }
 }
