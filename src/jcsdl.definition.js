@@ -20,9 +20,10 @@ var JCSDLDefinition = (function() {
         // general interaction
         interaction : {
             name : 'All',
+            icon : 'fa fa-certificate',
             fields : {
                 content : {name: 'Content', preset: 'string'},
-                geo : {name: 'Location', preset: 'geo'},
+                geo : {name: 'Location', icon: 'fa fa-map-marker', preset: 'geo'},
                 link : {name: 'Link', preset: 'url'},
                 sample : {name: 'Sample', type: 'float', input: 'slider', operators: ['lowerThan'], displayFormat : function(v) { return v + '%';}},
                 source : {name: 'Source', preset: 'string'},
@@ -30,12 +31,12 @@ var JCSDLDefinition = (function() {
                 title : {name: 'Title', preset: 'string'},
                 author : {
                     name: 'Author',
-                    icon : 'user',
+                    icon : 'fa fa-user',
                     fields: {
-                        id : {name: 'ID', icon: 'user-id', preset: 'int'},
+                        id : {name: 'ID', preset: 'int'},
                         avatar : {name: 'Avatar', type: 'string', cs: true, input: 'text', operators: ['exists']},
                         link : {name: 'Link', preset: 'url'},
-                        name : {name: 'Name', icon: 'fullname', preset: 'string'},
+                        name : {name: 'Name', preset: 'string'},
                         username : {name: 'User Name', preset: 'string'}
                     }
                 }
@@ -45,11 +46,12 @@ var JCSDLDefinition = (function() {
         // twitter
         twitter : {
             name : 'Twitter',
+            icon : 'fa fa-twitter-square',
             fields : {
                 domains : {name: 'Domains',  preset: 'string'},
                 geo : {name: 'Location', preset: 'geo'},
-                in_reply_to_screen_name : {name: 'In Reply To',  icon: 'inreply', preset: 'string'},
-                links : {name: 'Links', icon: 'link', preset: 'url'},
+                in_reply_to_screen_name : {name: 'In Reply To',  icon: 'fa fa-reply', preset: 'string'},
+                links : {name: 'Links', icon: 'fa fa-external-link', preset: 'url'},
                 mentions : {name: 'Mentions',  preset: 'string'},
                 mention_ids : {name: 'Mentions IDs', preset: 'int'},
                 source : {name: 'Source',  preset: 'string'},
@@ -62,17 +64,17 @@ var JCSDLDefinition = (function() {
                         followers_count : {name: 'Followers Count', preset: 'sliderRange', max : 50000, 'default' : 1000, step : 100},
                         follower_ratio : {name: 'Follower Ratio', preset: 'sliderRange', type: 'float', max : 10, step : 0.1, 'default' : 2},
                         friends_count : {name: 'Friends Count', preset: 'sliderRange', max : 50000, 'default' : 1000, step : 100},
-                        id : {name: 'ID', icon: 'user-id', preset: 'intArray'},
-                        lang : {name: 'Language', icon: 'language', type: 'string', input: 'select', optionsSet: 'language', operators: ['exists', 'in']},
+                        id : {name: 'ID', preset: 'intArray'},
+                        lang : {name: 'Language', icon: 'fa fa-language', type: 'string', input: 'select', optionsSet: 'language', operators: ['exists', 'in']},
                         listed_count : {name: 'Listed Count', preset: 'sliderRange', max : 1000, 'default' : 500},
                         location : {name: 'Location', preset: 'string'},
-                        name : {name: 'Name', icon: 'username', preset: 'string'},
+                        name : {name: 'Name', preset: 'string'},
                         profile_age : {name: 'Age', icon: 'age', preset: 'sliderRangeEquals', min : 7, max : 100, 'default' : 21},
                         screen_name : {name: 'Screen Name',  preset: 'string'},
                         statuses_count : {name: 'Statuses Count', preset: 'sliderRange', max : 10000, 'default' : 50},
                         time_zone : {name: 'Time Zone',  preset: 'string'},
                         url : {name: 'URL', icon: 'url', preset: 'url'},
-                        verified : {name: 'Verified', icon: 'user_verified', type: 'int', input: 'select', options: {'1':'Verified'}, operators: ['equals']}
+                        verified : {name: 'Verified', type: 'int', input: 'select', options: {'1':'Verified'}, operators: ['equals']}
                     }
                 },
                 place : {
@@ -87,7 +89,7 @@ var JCSDLDefinition = (function() {
                                 street_address : {name: 'Street Address', preset: 'string'}
                             }
                         },
-                        country : {name: 'Country', preset: 'string'},
+                        country : {name: 'Country', icon: 'fa fa-flag', preset: 'string'},
                         country_code : {name: 'Country Code', preset: 'string'},
                         full_name : {name: 'Full Name', icon: 'fullname', preset: 'string'},
                         name : {name: 'Name', icon: 'placename', preset: 'string'},
@@ -100,8 +102,8 @@ var JCSDLDefinition = (function() {
                     fields : {
                         count : {name: 'No. of Retweets', preset: 'sliderRange', max : 10000, 'default' : 100},
                         domains : {name: 'Domains',  preset: 'string'},
-                        elapsed : {name: 'Elapsed', preset: 'int'},
-                        links : {name: 'Links', icon: 'link', preset: 'url'},
+                        elapsed : {name: 'Elapsed', icon: 'fa fa-clock', preset: 'int'},
+                        links : {name: 'Links', icon: 'fa fa-external-link', preset: 'url'},
                         source : {name: 'Source',  preset: 'string'},
                         text : {name: 'Tweet', icon: 'tweet', preset: 'string'},
                         mentions : {name: 'Mentions',  preset: 'string'},
@@ -123,6 +125,7 @@ var JCSDLDefinition = (function() {
         // facebook
         facebook : {
             name : 'Facebook',
+            icon : 'fa fa-facebook-square',
             fields : {
                 application : {name: 'Application', preset: 'string'},
                 caption : {name: 'Caption', preset: 'string'},
@@ -146,52 +149,13 @@ var JCSDLDefinition = (function() {
             }
         },
 
-        facebook_page : {
-            name : 'Facebook Page',
-            fields : {
-                'comment-id' : {name: 'Comment ID', preset: 'stringNumber'},
-                'from-category' : {name: 'From Category', preset: 'string'},
-                'from-id' : {name: 'From ID', preset: 'stringNumber'},
-                'from-name' : {name: 'From Name', preset: 'string'},
-                id : {name: 'Long Facebook ID', preset: 'stringNumber'},
-                link : {name: 'Link', type: 'string', preset: 'url'},
-                message : {name: 'Message', preset: 'string'},
-                name : {name: 'Name', preset: 'string'},
-                object_id : {name: 'Object ID', preset: 'stringNumber'},
-                page : {
-                    name : 'Page',
-                    fields : {
-                        category : {name: 'Category', icon: 'page_category', preset: 'string'},
-                        id : {name: 'ID', icon: 'page_id', preset: 'stringNumber'},
-                        link : {name: 'Link', icon: 'page_link', type: 'string', preset: 'url'},
-                        name : {name: 'Name', icon: 'page_name', preset: 'string'},
-                        username : {name: 'User Name', icon: 'page_username', preset: 'string'}
-                    }
-                },
-                post : {
-                    name : 'Post',
-                    fields : {
-                        id : {name: 'ID', icon: 'post_id', preset: 'stringNumber'},
-                        content : {name: 'Content', icon: 'post_content', preset: 'string'},
-                        link : {name: 'Link', icon: 'post_link', type: 'string', preset: 'url'},
-                        type : {name: 'Type', icon: 'post_type', preset: 'string'}
-                    }
-                },
-                type : {name: 'Type', preset: 'string'},
-                story : {name: 'Story', preset: 'string'},
-                picture : {name: 'Picture', preset: 'url'},
-                source : {name: 'Source', preset: 'string'},
-                'application-id' : {name: 'Applicaton ID', preset: 'stringNumber'},
-                'application-name' : {name: 'Application Name', preset: 'string'}
-            }
-        },
-
         blog : {
             name : 'Blog',
+            icon : 'fa fa-pencil-square',
             fields : {
                 author : {
                     name : 'Author',
-                    icon : 'user',
+                    icon : 'fa fa-user',
                     fields : {
                         avatar : {name: 'Avatar', preset: 'string'},
                         link : {name: 'Author Link', preset: 'url'},
@@ -215,132 +179,13 @@ var JCSDLDefinition = (function() {
             }
         },
 
-        board : {
-            name : 'Board',
-            fields : {
-                author : {
-                    name : 'Author',
-                    icon : 'user',
-                    fields : {
-                        age : {name: 'Age', preset: 'sliderRangeEquals', min : 7, max : 100, 'default' : 21},
-                        avatar : {name: 'Avatar', preset: 'string'},
-                        gender : {name: 'Gender', preset: 'string'},
-                        link : {name: 'Author Link', preset: 'url'},
-                        location : {name: 'Location', preset: 'string'},
-                        name : {name: 'Author Name', icon: 'author-name', preset: 'string'},
-                        registered : {name: 'Registered',  preset: 'string'},
-                        signature : {name: 'Signature',  preset: 'string'},
-                        username : {name: 'User Name', preset: 'string'}
-                    }
-                },
-                content : {name: 'Content', preset: 'string'},
-                contenttype : {name: 'Content Type', preset: 'singleSelect', options: {'HTML':'html'}},
-                domain : {name: 'Domain', preset: 'string'},
-                link : {name: 'Link', preset: 'url'},
-                thread : {name: 'Thread', preset: 'string'},
-                title : {name: 'Title', preset: 'string'},
-                type : {name: 'Type', preset: 'singleSelect', options: {'thread':'Thread','post':'Post'}}
-            }
-        },
-
-        dailymotion : {
-            name : 'DailyMotion',
-            fields : {
-                author : {
-                    name : 'Author',
-                    icon : 'user',
-                    fields : {
-                        link : {name: 'Author Link', preset: 'url'},
-                        username : {name: 'Author Name', icon: 'author-name', preset: 'string'}
-                    }
-                },
-                category : {name: 'Category', preset: 'string'},
-                content : {name: 'Content', preset: 'string'},
-                contenttype : {name: 'Content Type', type: 'string', preset: 'singleSelect', options: {'HTML':'html'}},
-                duration : {name: 'Duration', preset: 'sliderRangeEquals', min : 0, max : 10800, 'default' : 3600, displayFormat : function(v) {return v + 's';}},
-                tags : {name: 'Tags', preset: 'string'},
-                thumbnail : {name: 'Thumbnail', preset: 'string'},
-                title : {name: 'Title', preset: 'string'},
-                videolink : {name: 'Video Link', preset: 'url'}
-            }
-        },
-
-        imdb : {
-            name : 'IMDb',
-            fields : {
-                author : {
-                    name : 'Author',
-                    icon : 'user',
-                    fields : {
-                        link : {name: 'Author Link', preset: 'url'},
-                        name : {name: 'Author Name', icon: 'author-name', preset: 'string'}
-                    }
-                },
-                content : {name: 'Content', preset: 'string'},
-                contenttype : {name: 'Content Type', preset: 'singleSelect', options: {'HTML':'html'}},
-                link : {name: 'Link', preset: 'url'},
-                thread : {name: 'Thread', preset: 'string'},
-                title : {name: 'Title', preset: 'string'},
-                type : {name: 'Type', preset: 'singleSelect', options: {'thread':'Thread','post':'Post'}}
-            }
-        },
-
-        newscred : {
-            name : 'NewsCred',
-            fields : {
-                article : {
-                    name : 'Article',
-                    fields : {
-                        authors : {name: 'Authors', preset: 'string'},
-                        category : {name: 'Category', preset: 'multiSelect', optionsSet: 'newscredCategories'},
-                        title : {name: 'Title', preset: 'url'},
-                        content : {name: 'Content', preset: 'string'},
-                        fulltext : {name: 'Full Text', preset: 'string'},
-                        domain : {name: 'Domain', preset: 'string'},
-                        topics : {name: 'Topics', preset: 'string'}
-                    }
-                },
-                image : {
-                    name : 'Image',
-                    fields : {
-                        'attribution-link' : {name: 'Attribution Link', preset: 'url'},
-                        'attribution-text' : {name: 'Attribution Text', preset: 'string'},
-                        caption : {name: 'Caption', preset: 'string'}
-                    }
-                },
-                source : {
-                    name : 'Source',
-                    fields : {
-                        domain : {name: 'Source Domain', preset: 'string'},
-                        link : {name: 'Link', type: 'string', preset: 'url'},
-                        circulation : {name: 'Circulation', preset: 'string'},
-                        name : {name: 'Name', icon: 'source_name', preset: 'string'},
-                        company_type : {name: 'Company Type', preset: 'singleSelect', options: {'Private':'Private','Public':'Public','Cooperative':'Cooperative','Govt':'Government'}},
-                        country : {name: 'Country', preset: 'string'},
-                        founded : {name: 'Founded', type: 'string', input: 'number', operators: ['exists', 'equals', 'different']},
-                        media_type : {name: 'Media Type', preset: 'singleSelect', options: {'blog':'Blog','mainstream':'Mainstream'}}
-                    }
-                },
-                type : {name: 'Type', preset: 'singleSelect', options: {'article':'Article','video':'Video','image':'Image'}},
-                video : {
-                    name : 'Video',
-                    fields : {
-                        caption : {name: 'Caption', icon: 'video-caption', preset: 'string'},
-                        category : {name: 'Category', preset: 'multiSelect', optionsSet: 'newscredCategories'},
-                        domain : {name: 'Domain', preset: 'string'},
-                        title : {name: 'Title', preset: 'string'},
-                        topics : {name: 'Topics', preset: 'string'}
-                    }
-                }
-            }
-        },
-
         reddit : {
             name : 'Reddit',
+            icon : 'fa fa-reddit',
             fields : {
                 author : {
                     name : 'Author',
-                    icon : 'user',
+                    icon : 'fa fa-user',
                     fields : {
                         link : {name: 'Author Link', preset: 'url'},
                         name : {name: 'Author Name', icon: 'author-name', preset: 'string'}
@@ -352,62 +197,16 @@ var JCSDLDefinition = (function() {
                 thread : {name: 'Thread', preset: 'string'},
                 title : {name: 'Title', preset: 'string'},
                 type : {name: 'Type', preset: 'singleSelect', options: {'thread':'Thread','post':'Post'}}
-            }
-        },
-
-        topix : {
-            name : 'Topix',
-            fields : {
-                author : {
-                    name : 'Author',
-                    icon : 'user',
-                    fields : {
-                        location : {name: 'Location', preset: 'string'},
-                        name : {name: 'Author Name', icon: 'author-name', preset: 'string'}
-                    }
-                },
-                content : {name: 'Content', preset: 'string'},
-                contenttype : {name: 'Content Type', preset: 'singleSelect', options: {'HTML':'html'}},
-                link : {name: 'Link', preset: 'url'},
-                thread : {name: 'Thread', preset: 'string'},
-                title : {name: 'Title', preset: 'string'},
-                type : {name: 'Type', preset: 'singleSelect', options: {'thread':'Thread','post':'Post'}}
-            }
-        },
-
-        video : {
-            name : 'Video',
-            fields : {
-                author : {
-                    name : 'Author',
-                    icon : 'user',
-                    fields : {
-                        avatar : {name: 'Avatar', preset: 'string'},
-                        link : {name: 'Author Link', preset: 'url'},
-                        name : {name: 'Author Name', icon: 'author-name', preset: 'string'},
-                        username : {name: 'User Name', preset: 'string'}
-                    }
-                },
-                category : {name: 'Category', preset: 'string'},
-                commentslink : {name: 'Comments Link', preset: 'url'},
-                content : {name: 'Content', preset: 'string'},
-                contenttype : {name: 'Content Type', preset: 'singleSelect', options: {'HTML':'html'}},
-                domain : {name: 'Domain', preset: 'string'},
-                duration : {name: 'Duration', preset: 'sliderRangeEquals', min : 0, max : 10800, 'default' : 3600, displayFormat : function(v) {return v + 's';}},
-                tags : {name: 'Tags', preset: 'string'},
-                thumbnail : {name: 'Thumbnail', preset: 'string'},
-                title : {name: 'Title', preset: 'string'},
-                type : {name: 'Type', preset: 'singleSelect', options: {'video':'Video','comment':'Comment'}},
-                videolink : {name: 'Video Link', preset: 'url'}
             }
         },
 
         youtube : {
             name : 'YouTube',
+            icon : 'fa fa-youtube',
             fields : {
                 author : {
                     name : 'Author',
-                    icon : 'user',
+                    icon : 'fa fa-user',
                     fields : {
                         link : {name: 'Author Link', preset: 'url'},
                         name : {name: 'Author Name', icon: 'author-name', preset: 'string'}
@@ -425,61 +224,9 @@ var JCSDLDefinition = (function() {
             }
         },
 
-        bitly : {
-            name : 'Bit.ly',
-            fields : {
-                'user-agent' : {name: 'User Agent', icon: 'useragent', preset: 'string'},
-                url_hash : {name: 'URL Hash', preset: 'string'},
-                'share-hash' : {name: 'Share Hash', icon: 'share_hash', preset: 'string'},
-                cname : {name: 'CName', preset: 'string'},
-                referring_url : {name: 'Referring URL', icon: 'ref_url', preset: 'url'},
-                referring_domain : {name: 'Referring Domain', icon: 'ref_domain', preset: 'string', operator: 'in'},
-                url : {name: 'URL', preset: 'url'},
-                domain : {name: 'Domain', preset: 'string', operator: 'in'},
-                country : {name: 'Country', preset: 'string'},
-                country_code : {name: 'Country Code', preset: 'string'},
-                geo_region : {name: 'Geo Region', preset: 'string'},
-                geo_region_code : {name: 'Geo Region Code', preset: 'string'},
-                geo_city : {name: 'Geo City', icon: 'city', preset: 'string'},
-                geo : {name: 'Geo', preset: 'geo'},
-                timezone : {name: 'Timezone', preset: 'string'}
-            }
-        },
-
-        wikipedia : {
-            name : 'Wikipedia',
-            fields : {
-                author : {
-                    name : 'Author',
-                    icon : 'user',
-                    fields : {
-                        contributions : {name: 'Author Contributions Page', icon: 'contributions', preset: 'string'},
-                        talk : {name: 'Author Talk Page', icon: 'talkpage', preset: 'string'}
-                    }
-                },
-                changetype : {name: 'Change Type', preset: 'singleSelect', options: {'minor_edit':'Minor Edit','new_page':'New Page','bot_edit':'Automatic Edit'}},
-                diff : {
-                    name : 'Difference',
-                    fields : {
-                        'changes-added' : {name: 'Changes Added', icon: 'changeadded', preset: 'string'},
-                        'changes-removed' : {name: 'Changes Removed', icon: 'changeremoved', preset: 'string'},
-                        from : {name: 'From', icon: 'diff-from', preset: 'stringNumber'},
-                        to : {name: 'To', icon: 'diff-to', preset: 'stringNumber'}
-                    }
-                },
-                pageid : {name: 'Page ID', preset: 'int', operator: 'equals'},
-                parentid : {name: 'Parent ID', preset: 'int', operator: 'equals'},
-                title : {name: 'Title', preset: 'string'},
-                externallinks : {name: 'External Links', preset: 'url'},
-                images : {name: 'Images', icon: 'image', preset: 'url'},
-                namespace : {name: 'Namespace', preset: 'singleSelect', options: {'Media':'Media','Special':'Special','Main':'Main','Talk':'Talk','User':'User','User talk':'User Talk','Project':'Project','Project talk':'Project Talk','File':'File talk','MediaWiki':'MediaWiki','MediaWiki talk':'MediaWiki Talk','Template':'Template','Template talk':'Template Talk','Help':'Help','Help talk':'Help Talk','Category':'Category','Category talk':'Category Talk'}},
-                newlen : {name: 'New Length', icon: 'newlength', preset: 'sliderRangeEquals', min: 0, max: 10000, 'default': 1000},
-                oldlen : {name: 'Old Length', icon: 'oldlength', preset: 'sliderRangeEquals', min: 0, max: 10000, 'default': 1000}
-            }
-        },
-
         tumblr : {
             name : 'Tumblr',
+            icon : 'fa fa-tumblr-square',
             fields : {
                 activity : {name: 'Activity', icon: 'tumblractivity', preset: 'singleSelect', options: {'CreatePost':'Create Post', 'UpdatePost':'Update Post', 'DeletePost':'Delete Post', 'Likes':'Likes', 'Unlikes':'Unlikes'}},
                 type : {name: 'Type', icon: 'tumblrtype', preset: 'singleSelect', options: {'photo':'Photo','video':'Video','audio':'Audio','text':'Text','chat':'Chat','quote':'Quote','answer':'Answer','link':'Link'}},
@@ -545,6 +292,7 @@ var JCSDLDefinition = (function() {
 
         googleplus : {
             name : 'Google+',
+            icon : 'fa fa-google-plus',
             fields : {
                 url : {name: 'URL', preset: 'url'},
                 type : {name: 'Type', preset: 'singleSelect', options: {'activity':'Activity','comment':'Comment','plusone':'+1'}},
@@ -579,6 +327,7 @@ var JCSDLDefinition = (function() {
 
         instagram : {
             name : 'Instagram',
+            icon : 'fa fa-instagram',
             fields : {
                 type : {name: 'Type', preset: 'singleSelect', options: {'image':'Image','video':'Video','comment':'Comment','like':'Like'}},
                 tags : {name: 'Tags', preset: 'string'},
@@ -641,7 +390,7 @@ var JCSDLDefinition = (function() {
                     fields : {
                         text : {name: 'Text', preset: 'string'},
                         'from-id' : {name: 'From ID', preset: 'stringNumber'},
-                        'from-username' : {name: 'From Username', icon: 'username', preset: 'string'},
+                        'from-username' : {name: 'From Username', preset: 'string'},
                         'from-full_name' : {name: 'From Full Name', icon: 'fullname', preset: 'string'}
                     }
                 },
@@ -682,71 +431,9 @@ var JCSDLDefinition = (function() {
             }
         },
 
-        yammer : {
-            name : 'Yammer',
-            fields : {
-                type : {name: 'Type', preset: 'string'},
-                message_type : {name: 'Message Type', preset: 'string'},
-                direct_message : {name: 'Direct Message', type: 'int', input: 'select', operators: ['exists', 'equals'], options: {'0':'0','1':'1'}},
-                url : {name: 'URL', preset: 'url'},
-                privacy : {name: 'Privacy', preset: 'singleSelect', options: {'private':'Private','public':'Public'}},
-                sender_type : {name: 'Sender Type', preset: 'singleSelect', options: {'user':'User','system':'System'}},
-                web_url : {name: 'Web Url', preset: 'url'},
-                client_type : {name: 'Client Type', preset: 'string'},
-                content_excerpt : {name: 'Content Excerpt', preset: 'string'},
-                body : {
-                    name : 'Body',
-                    fields : {
-                        rich : {name: 'Rich Body', preset: 'string'},
-                        parsed : {name: 'Parsed Body', preset: 'string'},
-                        plain : {name: 'Plain Body', preset: 'string'}
-                    }
-                },
-                thread : {
-                    name : 'Thread',
-                    fields : {
-                        'stats-shares' : {name: 'Shares Stats', icon: 'shares', preset: 'sliderRangeEquals', min: 0, max: 10000, 'default': 500},
-                        'stats-updates' : {name: 'Updates Stats', icon: 'updates', preset: 'sliderRangeEquals', min: 0, max: 10000, 'default': 500},
-                        direct_message : {name: 'Direct Message', type: 'int', input: 'select', operators: ['exists', 'equals'], options: {'0':'0','1':'1'}},
-                        id : {name: 'ID', type: 'int', input: 'text', operators: ['exists', 'equals']},
-                        url : {name: 'URL', preset: 'url'},
-                        privacy : {name: 'Privacy', preset: 'singleSelect', options: {'private':'Private','public':'Public'}},
-                        web_url : {name: 'Web Url', preset: 'url'},
-                    }
-                },
-                group : {
-                    name : 'Group',
-                    fields : {
-                        name : {name: 'Name', preset: 'string'},
-                        id : {name: 'ID', type: 'int', input: 'text', operators: ['exists', 'equals', 'different', 'in']},
-                        office365_url : {name: 'Office 365 URL', preset: 'url'},
-                        url : {name: 'URL', preset: 'url'},
-                        description : {name: 'Description', preset: 'string'},
-                        privacy : {name: 'Privacy', preset: 'singleSelect', options: {'private':'Private','public':'Public'}},
-                        web_url : {name: 'Web Url', preset: 'url'},
-                        full_name : {name: 'Full Name', icon: 'fullname', preset: 'string'},
-                        'stats-followers' : {name: 'Followers Stats', icon: 'followers', preset: 'sliderRangeEquals', min: 0, max: 10000, 'default': 500},
-                        'stats-following' : {name: 'Following Stats', icon: 'following', preset: 'sliderRangeEquals', min: 0, max: 10000, 'default': 500},
-                        'stats-updates' : {name: 'Updates Stats', icon: 'updates', preset: 'sliderRangeEquals', min: 0, max: 10000, 'default': 500}
-                    }
-                },
-                sender : {
-                    name : 'Sender',
-                    fields : {
-                        job_title : {name: 'Job Title', preset: 'string'},
-                        name : {name: 'Name', preset: 'string'},
-                        id : {name: 'ID', type: 'int', input: 'text', operators: ['exists', 'equals', 'different', 'in']},
-                        url : {name: 'URL', preset: 'url'},
-                        type : {name: 'Type', preset: 'singleSelect', options: {'user':'User','system':'System'}},
-                        web_url : {name: 'Web Url', preset: 'url'},
-                        full_name : {name: 'Full Name', icon: 'fullname', preset: 'string'}
-                    }
-                }
-            }
-        },
-
         wordpress : {
             name : 'Wordpress',
+            icon : 'fa fa-wordpress',
             fields : {
                 article : {
                     name : 'Article',
@@ -754,7 +441,7 @@ var JCSDLDefinition = (function() {
                         author : {
                             name : 'Author',
                             fields : {
-                                id : {name: 'Author ID', icon: 'user-id', preset: 'stringNumber'},
+                                id : {name: 'Author ID', preset: 'stringNumber'},
                                 link : {name: 'Author Link', preset: 'url'},
                                 username : {name: 'Author Username', preset: 'string'}
                             }
@@ -762,7 +449,7 @@ var JCSDLDefinition = (function() {
                         blog_id : {name: 'Blog ID', icon: 'blogid', preset: 'stringNumber'},
                         comment_count : {name: 'Comment Count', icon: 'comments-count', preset: 'sliderRange', min: 0, max: 1000},
                         id : {name: 'ID', preset: 'stringNumber'},
-                        lang : {name: 'Language', icon: 'language', preset: 'multiSelect', optionsSet: 'language'},
+                        lang : {name: 'Language', icon: 'fa fa-language', preset: 'multiSelect', optionsSet: 'language'},
                         link : {name: 'Link', preset: 'url'},
                         post_id : {name: 'Post ID', preset: 'stringNumber'},
                         summary : {name: 'Summary', icon: 'description', preset: 'string'},
@@ -772,7 +459,7 @@ var JCSDLDefinition = (function() {
                 author : {
                     name : 'Author',
                     fields : {
-                        id : {name: 'Author ID', icon: 'user-id', preset: 'stringNumber'},
+                        id : {name: 'Author ID', preset: 'stringNumber'},
                         link : {name: 'Author Link', preset: 'url'},
                         username : {name: 'Author Username', preset: 'string'}
                     }
@@ -780,7 +467,7 @@ var JCSDLDefinition = (function() {
                 content : {name: 'Content', preset: 'string'},
                 tags : {name: 'Tags', preset: 'string'},
                 categories : {name: 'Categories', icon: 'category', preset: 'string'},
-                inreplyto : {name: 'In Reply To', icon: 'inreply', preset: 'string'},
+                inreplyto : {name: 'In Reply To', icon: 'fa fa-reply', preset: 'string'},
                 link : {name: 'Link', preset: 'url'},
                 permalink : {name: 'Permalink', preset: 'url'},
                 title : {name: 'Title', preset: 'string'},
@@ -791,368 +478,8 @@ var JCSDLDefinition = (function() {
                         name : {name: 'Name', preset: 'string'},
                         link : {name: 'Link', preset: 'url'},
                         id : {name: 'ID', preset: 'stringNumber'},
-                        lang : {name: 'Language', icon: 'language', preset: 'multiSelect', optionsSet: 'language'},
+                        lang : {name: 'Language', icon: 'fa fa-language', preset: 'multiSelect', optionsSet: 'language'},
                         summary : {name: 'Summary', icon: 'description', preset: 'string'}
-                    }
-                }
-            }
-        },
-
-        intensedebate : {
-            name : 'Intense Debate',
-            fields : {
-                author : {
-                    name : 'Author',
-                    fields : {
-                        username : {name: 'Username', preset: 'string'},
-                        link : {name: 'Link', preset: 'url'}
-                    }
-                },
-                title : {name: 'Title', preset: 'string'},
-                type : {name: 'Type', preset: 'singleSelect', options: {'vote-up':'Vote Up','vote-down':'Vote Down','comment':'Comment'}},
-                article : {
-                    name : 'Article',
-                    fields : {
-                        id : {name: 'ID', preset: 'stringNumber'},
-                        title : {name: 'Title', preset: 'string'},
-                        link : {name: 'Author Link', preset: 'url'}
-                    }
-                },
-                content : {name: 'content', preset: 'string'}
-            }
-        },
-
-        lexisnexis : {
-            name : 'Lexis Nexis',
-            fields : {
-                article : {
-                    name : 'Article',
-                    fields : {
-                        byline : {name: 'Byline', preset: 'string'},
-                        content : {name: 'Content', preset: 'string'},
-                        length : {name: 'Length', preset: 'int'},
-                        title : {name: 'Title', preset: 'string'},
-                        type : {name: 'Type', preset: 'singleSelect', options: {'Magazine':'Magazine','Newspaper':'Newspaper','Newswire':'Newswire','Other (Journal)':'Other (Journal)','Other (Periodical)':'Other (Periodical)','Overige (Tijdschriftartikel)':'Overige (Tijdschriftartikel)','Transcript':'Transcript','Web Blog':'Web Blog','Web Publication':'Web Publication'}}
-                    }
-                },
-                'docinfo-lnlni' : {name: 'Docinfo Lnlni', preset: 'string'},
-                feedtype : {name: 'Feedtype', preset: 'singleSelect', options: {'industry':'Industry','international':'International','us':'US'}},
-                indexing : {
-                    name : 'Indexing',
-                    fields : {
-                        'city-item-term' : {name: 'City', preset: 'string', icon: 'city'},
-                        'company-item-term' : {name: 'Company', preset: 'string', icon: 'company'},
-                        'country-item-term' : {name: 'Country', preset: 'string', icon: 'country'},
-                        'industry-item-term' : {name: 'Industry', preset: 'string', icon: 'industry'},
-                        'organization-item-term' : {name: 'Organization', preset: 'string', icon: 'organization'},
-                        'state-item-term' : {name: 'State', preset: 'string', icon: 'state'},
-                        'subject-item-term' : {name: 'Subject', preset: 'string', icon: 'subject'},
-                        'ticker-item-term' : {name: 'Ticker', preset: 'string', icon: 'ticker'}
-                    }
-                },
-                language : {name: 'Language', preset: 'singleSelect', options: {'da':'Danish','de':'German','en':'English','fr':'French','it':'Italian','ms':'Malay','nl':'Dutch','pl':'Polish','ru':'Russian'}},
-                links : {name: 'Links', preset: 'string'},
-                'load-date': {name: 'Load Date', preset: 'string'},
-                'source-name': {name: 'Source Name', preset: 'string', icon: 'source'}
-            }
-        },
-
-        sinaweibo : {
-            name : 'Sina Weibo',
-            fields : {
-                'annotations-photos-caption': {name: 'Annotations Photos Caption', preset: 'string', icon: 'photos-caption'},
-                'annotations-place-geo': {name: 'Annotations Place Geo', preset: 'string', icon: 'place-geo'},
-                author : {
-                    name : 'Author',
-                    fields : {
-                        'city-name': {name: 'City', preset: 'string', icon: 'city'},
-                        displayname : {name: 'Display Name', preset: 'string'},
-                        favourites_count : {name: 'Favourites Count', preset: 'sliderRange', icon: 'favourites-count'},
-                        followers_count : {name: 'Followers Count', preset: 'sliderRange'},
-                        following : {name: 'Following', preset: 'sliderRange'},
-                        friends_count : {name: 'Friends Count', preset: 'sliderRange'},
-                        gender : {name: 'Gender', preset: 'singleSelect', options: {'m':'Male','f':'Female'}},
-                        id : {name: 'ID', preset: 'string'},
-                        link : {name: 'Link', preset: 'string'},
-                        'province-name': {name: 'Province', preset: 'string', icon: 'province'},
-                        screen_name : {name: 'Screen Name', preset: 'string'},
-                        statuses_count : {name: 'Statuses Count', preset: 'sliderRange'},
-                        verified : {name: 'Verified', preset: 'singleSelect', options: {'true':'True'}, icon: 'user_verified'}
-                    }
-                },
-                geo : {name: 'Geo', preset: 'geo'},
-                id : {name: 'ID', preset: 'string'},
-                language : {name: 'Language', preset: 'singleSelect', options: {'zh-cn':'Chinese','zh-tw':'Chinese - Taiwan','en':'English','de':'German','ja':'Japanese','vi':'Vietnamese','cs':'Czech','nl':'Dutch','fil':'Filipino','ro':'Romanian'}},
-                link : {name: 'Link', preset: 'string'},
-                original_pic : {name: 'Original Picture', preset: 'string', icon: 'original-pic'},
-                parent_reblog : {name: 'Parent Reblog', preset: 'string', icon: 'parent-reblog'},
-                reblogged : {
-                    name : 'Reblogged',
-                    fields : {
-                        'annotations-place-geo': {name: 'Annotations Place Geo', preset: 'string', icon: 'place-geo'},
-                        author : {
-                            name : 'Author',
-                            fields : {
-                                id : {name: 'ID', preset: 'string'},
-                                link : {name: 'Link', preset: 'string'}
-                            }
-                        },
-                        geo : {name: 'Geo', preset: 'geo'},
-                        id : {name: 'ID', preset: 'string'},
-                        language : {name: 'Language', preset: 'singleSelect', options: {'zh-cn':'Chinese','zh-tw':'Chinese - Taiwan','en':'English','de':'German','ja':'Japanese','vi':'Vietnamese','cs':'Czech','nl':'Dutch','fil':'Filipino','ro':'Romanian'}},
-                        link : {name: 'Link', preset: 'string'},
-                        original_pic : {name: 'Original Picture', preset: 'string', icon: 'original-pic'},
-                        source : {name: 'Source', preset: 'string'}
-                    }
-                },
-                reply : {
-                    name : 'Reply',
-                    fields : {
-                        author : {
-                            name : 'Author',
-                            fields : {
-                                id : {name: 'ID', preset: 'string'},
-                                link : {name: 'Link', preset: 'string'}
-                            }
-                        },
-                        language : {name: 'Language', preset: 'singleSelect', options: {'zh-cn':'Chinese','zh-tw':'Chinese - Taiwan','en':'English','de':'German','ja':'Japanese','vi':'Vietnamese','cs':'Czech','nl':'Dutch','fil':'Filipino','ro':'Romanian'}},
-                        link : {name: 'Link', preset: 'string'},
-                        source : {name: 'Source', preset: 'string'},
-                        text : {name: 'Text', preset: 'string', icon: 'content'}
-                    }
-                },
-                source : {name: 'Source', preset: 'string'},
-                status : {
-                    name : 'Status',
-                    fields : {
-                        'annotations-photos-caption': {name: 'Annotations Photos Caption', preset: 'string', icon: 'photos-caption'},
-                        'annotations-place-geo': {name: 'Annotations Place Geo', preset: 'string', icon: 'place-geo'},
-                        author : {
-                            name : 'Author',
-                            fields : {
-                                favourites_count : {name: 'Favourites Count', preset: 'sliderRange', icon: 'favourites-count'},
-                                followers_count : {name: 'Followers Count', preset: 'sliderRange'},
-                                friends_count : {name: 'Friends Count', preset: 'sliderRange'},
-                                id : {name: 'ID', preset: 'string'},
-                                link : {name: 'Link', preset: 'string'},
-                                statuses_count : {name: 'Statuses Count', preset: 'sliderRange'},
-                                verified : {name: 'Verified', preset: 'singleSelect', options: {'true':'True'}, icon: 'user_verified'}
-                            }
-                        },
-                        geo : {name: 'Geo', preset: 'geo'},
-                        id : {name: 'ID', preset: 'string'},
-                        language : {name: 'Language', preset: 'singleSelect', options: {'zh-cn':'Chinese','zh-tw':'Chinese - Taiwan','en':'English','de':'German','ja':'Japanese','vi':'Vietnamese','cs':'Czech','nl':'Dutch','fil':'Filipino','ro':'Romanian'}},
-                        link : {name: 'Link', preset: 'string'},
-                        parent_reblog : {name: 'Parent Reblog', preset: 'string', icon: 'parent-reblog'},
-                        source : {name: 'Source', preset: 'string'}
-                    }
-                },
-                text : {name: 'Text', preset: 'string', icon: 'content'},
-                type : {name: 'Type', preset: 'singleSelect', options: {'status':'Status','comment':'Comment'}}
-            }
-        },
-
-        tencentweibo : {
-            name : '10cent Weibo',
-            fields : {
-                author : {
-                    name : 'Author',
-                    fields : {
-                        displayname : {name: 'Display Name', preset: 'string'},
-                        followers_count : {name: 'Followers Count', preset: 'sliderRange'},
-                        following_count : {name: 'Following', preset: 'sliderRange', icon: 'following'},
-                        id : {name: 'ID', preset: 'string'},
-                        link : {name: 'Link', preset: 'string'},
-                        statuses_count : {name: 'Statuses Count', preset: 'sliderRange'},
-                        verified : {name: 'Verified', preset: 'singleSelect', options: {'true':'True'}, icon: 'user_verified'}
-                    }
-                },
-                image_url : {name: 'Image URL', preset: 'string', icon: 'image'},
-                lang : {name: 'Language', preset: 'singleSelect', icon: 'language', options: {'zh-cn':'Chinese','zh-tw':'Chinese - Taiwan','en':'English','vi':'Vietnamese','in':'India','fil':'Filipino','ja':'Japanese','pt':'Portuguese','cy':'Welsh','ms':'Malay'}},
-                link : {name: 'Link', preset: 'string'},
-                origin_url : {name: 'Origin URL', preset: 'string', icon: 'origin-url'},
-                post_id : {name: 'Post ID', preset: 'string'},
-                text : {name: 'Text', preset: 'string', icon: 'content'},
-                thread_id : {name: 'Thread ID', preset: 'string', icon: 'thread'},
-                thread_url : {name: 'Thread URL', preset: 'string', icon: 'thread-url'},
-                type : {name: 'Type', preset: 'singleSelect', options: {'post':'Post','repost':'Repost','reply':'Reply'}}
-            }
-        },
-
-        augmentation : {
-            name : 'Augmentations',
-            fields : {
-                klout : {
-                    name : 'Klout',
-                    fields : {
-                        amplification : {name: 'Amplification', preset: 'sliderRangeEquals', min: 0, max: 100, 'default': 50},
-                        network : {name: 'Network Effect', preset: 'sliderRangeEquals', min: 0, max: 100, 'default': 50},
-                        score : {name: 'Score', preset: 'sliderRangeEquals', min: 0, max: 100, 'default': 50},
-                        topics : {name: 'Topics', icon: 'topic', preset: 'string'},
-                        true_reach : {name: 'True Reach', preset: 'sliderRangeEquals', min: 0, max: 100000, 'default': 1000}
-                    }
-                },
-                links : {
-                    name : 'Links',
-                    fields : {
-                        title : {name: 'Title', preset: 'string'},
-                        domain : {name: 'Domain', preset: 'string', operator: 'equals'},
-                        url : {name: 'URL', preset: 'url'},
-                        normalized_url : {name: 'Normalized URL', preset: 'url'},
-                        hops : {name: 'Hops', preset: 'stringNumber', operator: 'equals'},
-                        code : {name: 'HTTP Code', icon: 'http_code', type: 'int', input: 'select', single: false, options: {'200':'200 OK','202':'202 Accepted','204':'204 No Content','300':'300 Multiple Choices','301':'301 Moved Permanently','302':'302 Found','303':'303 See Other','304':'304 Not Modified','307':'Temporary Redirect','400':'400 Bad Request','401':'401 Unauthorized','403':'403 Forbidden','404':'404 Not Found','405':'405 Method Not Allowed','406':'406 Not Acceptable','408':'408 Request Timeout','500':'500 Internal Server Error','502':'502 Bad Gateway','503':'503 Service Unavailable'}, operators: ['exists', 'equals', 'different', 'in'], operator: 'equals'},
-                        meta : {
-                            name : 'Meta',
-                            icon : 'metatags',
-                            fields : {
-                                content_type : {name: 'Content Type', icon: 'contenttype', preset: 'string', operator: 'equals'},
-                                charset : {name: 'Charset', preset: 'string', operator: 'in'},
-                                lang : {name: 'Language', icon: 'language', preset: 'string', operator: 'equals'},
-                                keywords : {name: 'Keywords', type: 'string', preset: 'string'},
-                                description : {name: 'Description', preset: 'string'},
-                                newskeywords : {name: 'Google News Keywords', preset: 'string'},
-                                standout : {name: 'Google News Standout Link', preset: 'string'},
-                                opengraph : {
-                                    name : 'Open Graph',
-                                    fields : {
-                                        type : {name: 'Object Type', preset: 'string', operator: 'in'},
-                                        title : {name: 'Object Title', preset: 'string', operator: 'in'},
-                                        image : {name: 'Object Image URL', preset: 'url'},
-                                        url : {name: 'Object Canonical URL', preset: 'url'},
-                                        description : {name: 'Description', preset: 'string'},
-                                        site_name : {name: 'Site Name', preset: 'string'},
-                                        email : {name: 'Email', preset: 'string', operator: 'equals'},
-                                        phone_number : {name: 'Phone Number',preset: 'string', operator: 'equals'},
-                                        fax_number : {name: 'Fax Number', preset: 'string', operator: 'equals'},
-                                        street_address : {name: 'Street Address', preset: 'string', operator: 'equals'},
-                                        locality : {name: 'Locality', preset: 'string', operator: 'equals'},
-                                        region : {name: 'Region', preset: 'string', operator: 'equals'},
-                                        postal_code : {name: 'Postal Code', preset: 'string'},
-                                        activity : {name: 'Activity', preset: 'string'},
-                                        sport : {name: 'Sport', preset: 'string'},
-                                        bar : {name: 'Bar', preset: 'string'},
-                                        company : {name: 'Company', preset: 'string'},
-                                        cafe : {name: 'Cafe', preset: 'string'},
-                                        hotel : {name: 'Hotel', preset: 'string'},
-                                        restaurant : {name: 'Restaurant', preset: 'string'},
-                                        cause : {name: 'Cause', preset: 'string'},
-                                        sports_league : {name: 'Sports League', preset: 'string'},
-                                        sports_team : {name: 'Sports Team', preset: 'string'},
-                                        band : {name: 'Band', preset: 'string'},
-                                        government : {name: 'Government', preset: 'string'},
-                                        non_profit : {name: 'Non Profit', preset: 'string'},
-                                        school : {name: 'School', preset: 'string'},
-                                        university : {name: 'University', preset: 'string'},
-                                        actor : {name: 'Actor', preset: 'string'},
-                                        athlete : {name: 'Athlete', preset: 'string'},
-                                        author : {name: 'Author', preset: 'string'},
-                                        director : {name: 'Director', preset: 'string'},
-                                        musician : {name: 'Musician', preset: 'string'},
-                                        politician : {name: 'Politician', preset: 'string'},
-                                        public_figure : {name: 'Public Figure', preset: 'string'},
-                                        city : {name: 'City', preset: 'string'},
-                                        country : {name: 'Country', preset: 'string'},
-                                        landmark : {name: 'Landmark', preset: 'string'},
-                                        state_province : {name: 'State / Province', preset: 'string'},
-                                        album : {name: 'Album', preset: 'string'},
-                                        book : {name: 'Book', preset: 'string'},
-                                        drink : {name: 'Drink', preset: 'string'},
-                                        food : {name: 'Food', preset: 'string'},
-                                        game : {name: 'Game', preset: 'string'},
-                                        movie : {name: 'Movie', preset: 'string'},
-                                        product : {name: 'Product', preset: 'string'},
-                                        song : {name: 'Song', preset: 'string'},
-                                        tv_show : {name: 'TV Show', preset: 'string'},
-                                        blog : {name: 'Blog', preset: 'string'},
-                                        website : {name: 'Website', preset: 'url'},
-                                        article : {name: 'Article', preset: 'string'}
-                                    }
-                                },
-                                twitter : {
-                                    name : 'Twitter',
-                                    fields : {
-                                        card : {name: 'Card Type', preset: 'singleSelect', options: {'summary':'Summary','photo':'Photo','player':'Player'}},
-                                        site : {name: 'Site Name (@username)', preset: 'string', operator: 'equals'},
-                                        site_id : {name: 'Website\'s Twitter User ID', preset: 'stringNumber', operator: 'equals'},
-                                        creator : {name: '@username for the Content Creator / Author', preset: 'stringNumber', operator: 'equals'},
-                                        creator_id : {name: 'Twitter ID of the Content Creator / Author', preset: 'stringNumber', operator: 'equals'},
-                                        url : {name: 'Canonical URL', preset: 'url'},
-                                        description : {name: 'Description', preset: 'string'},
-                                        title : {name: 'Title', preset: 'string'},
-                                        image : {name: 'Image URL', preset: 'url'},
-                                        image_width : {name: 'Image Width in Pixels', preset: 'stringNumber', operator: 'lowerThan'},
-                                        image_height : {name: 'Image Height in Pixels', preset: 'stringNumber', operator: 'lowerThan'},
-                                        player : {name: 'Player HTTPS URL', preset: 'url'},
-                                        player_width : {name: 'Player Width in Pixels', preset: 'stringNumber', operator: 'lowerThan'},
-                                        player_height : {name: 'Player Height in Pixels', preset: 'stringNumber', operator: 'lowerThan'},
-                                        player_stream : {name: 'Player Stream URL', preset: 'url'},
-                                        player_stream_content_type : {name: 'Player Stream Content Type', preset: 'string', operator: 'equals'}
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                trends : {
-                    name : 'Trends',
-                    fields : {
-                        type : {name: 'Type', preset: 'string', operator: 'equals'},
-                        content : {name: 'Content', preset: 'string'},
-                        source : {name: 'Source', preset: 'singleSelect', options: {'twitter':'Twitter'}}
-                    }
-                },
-                language : {
-                    name : 'Language',
-                    fields : {
-                        tag : {name: 'Language', icon: 'language_name', type: 'string', input: 'select', optionsSet: 'language', operators: ['in'], operator: 'in'},
-                        confidence : {name: 'Confidence', preset: 'sliderRangeEquals', min: 0, max: 100, 'default': 50}
-                    }
-                },
-                demographic : {
-                    name : 'Demographics',
-                    fields : {
-                        twitter_activity : {name: 'Twitter Activity', preset: 'singleSelect', options: {'> 5 tweets/day':'&gt 5 Tweets a Day','1-5 tweets/day':'1-5 Tweeks a Day','1-7 twts/week':'1-7 Tweets a Week','1-4 twts/month':'1-4 Tweets a Month','< 1 twt/month':'&lt; 1 Tweet a Month'}},
-                        large_accounts_followed : {name: 'Large Accounts Followed', preset: 'string', operator: 'in'},
-                        'accounts-categories' : {name: 'Categories of Accounts Followed', icon: 'accounts_categories', preset: 'string', operator: 'in'},
-                        likes_and_interests : {name: 'Likes and Interests', icon: 'interests', preset: 'string'},
-                        'status-work': {name: 'Work Status', icon: 'work-status', preset: 'singleSelect', options: {'Students':'Students','Unemployed':'Unemployed','Working':'Working','Retirees':'Retirees'}},
-                        professions : {name: 'Professions', type: 'string', preset: 'string', operator: 'in'},
-                        services : {name: 'Services and Technologies', icon: 'services_and_technologies', preset: 'string', operator: 'in'},
-                        'main_street-dressed_by' : {name: 'Dressed By', icon: 'ms_clothes', preset: 'string', operator: 'in'},
-                        'main_street-shop_at' : {name: 'Shop At', icon: 'ms_shop', preset: 'string', operator: 'in'},
-                        'main_street-eat_and_drink_at' : {name: 'Eat and Drink At', icon: 'ms_food', preset: 'string', operator: 'in'},
-                        type : {name: 'Type', type: 'string', input: 'select', options: {'People':'People','Companies/orgs':'Companies / Organizations'}, operators: ['exists', 'equals']},
-                        first_language : {name: 'First Language', preset: 'string'},
-                        'status-relationship': {name: 'Relationship Status', icon: 'relationship', preset: 'singleSelect', options: {'Single':'Single','Engaged':'Engaged','Married':'Married','Parents':'Parents','Divorced':'Divorced'}},
-                        sex: {name: 'Gender', preset: 'singleSelect', options: {'male':'Male','female':'Female'}},
-                        'age_range-start' : {name: 'Older Than', icon: 'older_than', type: 'int', input: 'slider', operators: ['exists', 'equals'], min: 0, max: 99, 'default': 25},
-                        'age_range-end' : {name: 'Younger Than', icon: 'younger_than', type: 'int', input: 'slider', operators: ['exists', 'equals'], min: 0, max: 99, 'default': 25},
-                        'location-country' : {name: 'Location by Country', icon: 'country', preset: 'string'},
-                        'location-us_state' : {name: 'Location by US State', icon: 'usa', preset: 'string'},
-                        'location-city' : {name: 'Location by City', icon: 'city', preset: 'string'}
-                    }
-                },
-                salience : {
-                    name : 'Salience',
-                    fields : {
-                        content : {
-                            name: 'Content',
-                            fields : {
-                                sentiment : {name: 'Sentiment', preset: 'sliderRange', min: -100, max: 100, 'default': 0},
-                                topics : {name: 'Topics', type: 'string', input: 'select', operators: ['in'], optionsSet: 'salienceTopics'},
-                                'entities-name' : {name: 'Entities Name', icon: 'entities_name', preset: 'string'},
-                                'entities-type' : {name: 'Entities Type', icon: 'entities_type', preset: 'string'}
-                            }
-                        },
-                        title : {
-                            name: 'Title',
-                            fields : {
-                                sentiment : {name: 'Sentiment', preset: 'sliderRange', min: -100, max: 100, 'default': 0},
-                                topics : {name: 'Topics', type: 'string', input: 'select', operators: ['in'], optionsSet: 'salienceTopics'},
-                                'entities-name' : {name: 'Entities Name', icon: 'entities_name', preset: 'string'},
-                                'entities-type' : {name: 'Entities Type', icon: 'entities_type', preset: 'string'}
-                            }
-                        }
                     }
                 }
             }
